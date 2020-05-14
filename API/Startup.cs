@@ -44,6 +44,7 @@ namespace API
 
             app.UseRouting();
 
+            //Allow application to serve Static Files
             app.UseStaticFiles();
 
             app.UseAuthorization();
