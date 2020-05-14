@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 1,
+    "Name": "NY Pizza"
+  },
+  {
+    "Id": 2,
+    "Name": "McDonalds"
+  },
+  {
+    "Id": 3,
+    "Name": "Burger King"
+  },
+  {
+    "Id": 4,
+    "Name": "Wendys"
+  },
+  {
+    "Id": 5,
+    "Name": "Dennys"
+  },
+  {
+    "Id": 6,
+    "Name": "In-and-out"
+  }
+]

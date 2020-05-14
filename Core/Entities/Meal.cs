@@ -1,9 +1,21 @@
 namespace Core.Entities
 {
-    public class Meal
+    public class Meal : BaseEntity
     {
-        public int Id { get; set; }
         public string Name { get; set; }
-        
+
+        public string Description {get; set;}
+
+        public decimal Price {get; set;}
+
+        public string PictureUrl { get; set; }
+
+        public MealType MealType {get; set;}
+
+        public int MealTypeId { get; set; }
+
+        public Menu Menu {get; set;}
+
+        public int MenuId { get; set; }
     }
 }
