@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "VsbGK7x3Whp2sjk907TC+TzouRIFOPc8Vy3en30sWg4wuwK84O9k7MeVSnce9WLA41fVG1rTptKv45zPDMmvmg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\junio\\Documents\\CS415\\Repos\\Online Cafeteria Ordering System\\Core\\Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\junio\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\junio\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
