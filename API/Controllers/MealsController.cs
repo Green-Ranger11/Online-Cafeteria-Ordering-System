@@ -2,19 +2,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Dtos;
+using API.Errors;
 using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
 using Infrastructure.Data;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class MealsController : ControllerBase
+    public class MealsController : BaseApiController
     {
         private readonly IGenericRepository<Meal> _mealsRepo;
         private readonly IGenericRepository<Menu> _menusRepo;
@@ -43,11 +43,15 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<MealToReturnDto>> GetMeal(int id)
         {
             var spec = new MealsWithTypesAndMenusSpecification(id);
 
             var meal = await _mealsRepo.GetEnitityWithSpec(spec);
+
+            if(meal == null) return NotFound(new ApiResponse(404));
 
             return _mapper.Map<Meal, MealToReturnDto>(meal);
         }
