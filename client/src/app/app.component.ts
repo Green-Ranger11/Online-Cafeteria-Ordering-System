@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IMeal } from './models/meal';
-import { IPagination } from './models/pagination';
+import { IMeal } from './shared/models/meal';
+import { IPagination } from './shared/models/pagination';
 
 @Component({
   selector: 'app-root',
