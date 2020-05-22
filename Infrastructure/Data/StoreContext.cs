@@ -14,6 +14,7 @@ namespace Infrastructure.Data
         public DbSet<Meal> Meals {get; set;}
         public DbSet<MealType> MealTypes {get; set;}
         public DbSet<Menu> Menus { get; set; }
+        public DbSet<Restaurant> Restaurants { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

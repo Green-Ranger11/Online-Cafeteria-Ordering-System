@@ -1,26 +1,32 @@
 [
   {
     "Id": 1,
-    "Name": "NY Pizza"
+    "Name": "NY Pizza",
+    "RestaurantId": 1
   },
   {
     "Id": 2,
-    "Name": "McDonalds"
+    "Name": "McDonalds",
+    "RestaurantId": 2
   },
   {
     "Id": 3,
-    "Name": "Burger King"
+    "Name": "Burger King",
+    "RestaurantId": 3
   },
   {
     "Id": 4,
-    "Name": "Wendys"
+    "Name": "Wendys",
+    "RestaurantId": 4
   },
   {
     "Id": 5,
-    "Name": "Dennys"
+    "Name": "Dennys",
+    "RestaurantId": 5
   },
   {
     "Id": 6,
-    "Name": "In-and-out"
+    "Name": "In-and-out",
+    "RestaurantId": 6
   }
 ]

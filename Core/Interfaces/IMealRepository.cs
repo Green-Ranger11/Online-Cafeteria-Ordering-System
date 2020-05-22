@@ -9,6 +9,7 @@ namespace Core.Interfaces
         Task<Meal> GetMealByIdAsync(int id);
         Task<IReadOnlyList<Meal>> GetMealsAsync();
         Task<IReadOnlyList<Menu>> GetMenusAsync();
+        Task<IReadOnlyList<Restaurant>> GetRestaurantsAsync();
         Task<IReadOnlyList<MealType>> GetMealTypesAsync();
     }
 }

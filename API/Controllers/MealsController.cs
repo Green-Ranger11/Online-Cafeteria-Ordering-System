@@ -19,11 +19,13 @@ namespace API.Controllers
     {
         private readonly IGenericRepository<Meal> _mealsRepo;
         private readonly IGenericRepository<Menu> _menusRepo;
+        private readonly IGenericRepository<Restaurant> _restaurantsRepo;
         private readonly IGenericRepository<MealType> _mealTypesRepo;
         private readonly IMapper _mapper;
 
         public MealsController(IGenericRepository<Meal> mealsRepo, 
         IGenericRepository<Menu> menusRepo, 
+        IGenericRepository<Restaurant> restaurantsRepo,
         IGenericRepository<MealType> mealTypesRepo,
         IMapper mapper)
         {
@@ -31,6 +33,7 @@ namespace API.Controllers
             _mapper = mapper;
             _menusRepo = menusRepo;
             _mealsRepo = mealsRepo;
+            _restaurantsRepo = restaurantsRepo;
         }
 
         [HttpGet]
@@ -67,6 +70,12 @@ namespace API.Controllers
         public async Task<ActionResult<IReadOnlyList<Menu>>> GetMenus()
         {
             return Ok(await _menusRepo.ListAllAsync());
+        }
+
+        [HttpGet("restaurants")]
+        public async Task<ActionResult<IReadOnlyList<Restaurant>>> GetRestaurants()
+        {
+            return Ok(await _restaurantsRepo.ListAllAsync());
         }
 
 

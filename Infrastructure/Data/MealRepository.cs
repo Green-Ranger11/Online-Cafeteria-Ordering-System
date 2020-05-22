@@ -39,5 +39,10 @@ namespace Infrastructure.Data
         {
             return await _context.Menus.ToListAsync();
         }
+
+        public async Task<IReadOnlyList<Restaurant>> GetRestaurantsAsync()
+        {
+            return await _context.Restaurants.ToListAsync();
+        }
     }
 }

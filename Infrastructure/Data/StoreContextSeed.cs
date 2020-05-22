@@ -15,6 +15,20 @@ namespace Infrastructure.Data
         {
             try
             {
+                if (!context.Restaurants.Any())
+                {
+                    var restaurantsData = File.ReadAllText("../Infrastructure/Data/SeedData/restaurants.json");
+
+                    var restaurants = JsonSerializer.Deserialize<List<Restaurant>>(restaurantsData);
+
+                    foreach (var item in restaurants)
+                    {
+                        context.Restaurants.Add(item);
+                    }
+
+                    await context.SaveChangesAsync();
+                }
+
                 if (!context.Menus.Any())
                 {
                     var menusData = File.ReadAllText("../Infrastructure/Data/SeedData/menus.json");
