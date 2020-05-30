@@ -13,6 +13,7 @@ namespace Core.Specifications
 
         public int? MenuId {get; set; }
         public int? TypeId { get; set; }
+        public int? RestaurantId { get; set; }
         public string Sort { get; set; }
         private string _search {get; set; }
 

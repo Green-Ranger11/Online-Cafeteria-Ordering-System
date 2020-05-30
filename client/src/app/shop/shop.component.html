@@ -2,39 +2,43 @@
     <div class="row">
         <section class="col-3">
             <h5 class="text-warning ml-3">Sort</h5>
-            <select class="custom-select mb-3">
-                <option selected>Alphabetical</option>
-                <option>Price: Low to High</option>
-                <option>Price: High to Low</option>
+            <select class="custom-select mb-3" (change)="onSortSelected($event.target.value)">
+                <option *ngFor="let sort of sortOption" [value]="sort.value">
+                    {{sort.name}}
+                </option>
             </select>
 
             <h5 class="text-warning ml-3">Restaurants</h5>
             <ul class="list-group my-3">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item" *ngFor="let restaurant of restaurants"
+                    [class.active]="restaurant.id === this.shopParams.restaurantId" [value]="restaurant.id"
+                    (click)="onRestaurantSelected(restaurant.id)">
+                    {{restaurant.name}}
+                </li>
             </ul>
             <h5 class="text-warning ml-3">Meal Type</h5>
             <ul class="list-group my-3">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item" *ngFor="let type of types" [class.active]="type.id === this.shopParams.typeId"
+                    [value]="type.id" (click)="onTypeSelected(type.id)">
+                    {{type.name}}
+                </li>
             </ul>
         </section>
 
         <section class="col-9">
             <div class="d-flex justify-content-between align-items-center pb-2">
-                <header>
-                    <span>Showing <strong>10</strong> of <strong>16</strong> Results</span>
-                </header>
+
+                <app-paging-header
+                    [totalCount]="totalCount"
+                    [pageSize]="this.shopParams.pageSize"
+                    [pageNumber]="this.shopParams.pageNumber"
+                >
+                </app-paging-header>
+
                 <div class="form-inline">
-                    <input type="text" class="form-control mr-2" style="width:300px" placeholder="Search" type="text">
-                    <button class="btn btn-outline-primary my-2">Search</button>
-                    <button class="btn btn-outline-success ml-2 my-2">Reset</button>
+                    <input type="text" class="form-control mr-2" #search style="width:300px" placeholder="Search" type="text">
+                    <button (click)="onSearch()" class="btn btn-outline-primary my-2">Search</button>
+                    <button (click)="onReset()"class="btn btn-outline-success ml-2 my-2">Reset</button>
                 </div>
             </div>
 
@@ -42,6 +46,14 @@
                 <div class="col-md-4 mb-4" *ngFor="let item of meals">
                     <app-meal-item [meal]="item"></app-meal-item>
                 </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <app-pager
+                    [pageSize]="shopParams.pageSize"
+                    [totalCount]="totalCount"
+                    (pageChanged)="onPageChanged($event)"
+                >
+                </app-pager>
             </div>
         </section>
     </div>

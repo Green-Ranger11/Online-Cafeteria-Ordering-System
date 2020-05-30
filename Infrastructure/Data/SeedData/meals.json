@@ -5,7 +5,8 @@
     "Price": 200,
     "PictureUrl": "images/meals/sb-ang1.png",
     "MealTypeId": 1,
-    "MenuId": 1
+    "MenuId": 1,
+    "RestaurantId": 1
   },
   {
     "Name": "Chicken Burger",
@@ -13,7 +14,8 @@
     "Price": 150,
     "PictureUrl": "images/meals/sb-ang2.png",
     "MealTypeId": 1,
-    "MenuId": 1
+    "MenuId": 1,
+    "RestaurantId": 1
   },
   {
     "Name": "Beef Burger",
@@ -21,7 +23,8 @@
     "Price": 180,
     "PictureUrl": "images/meals/sb-core1.png",
     "MealTypeId": 1,
-    "MenuId": 2
+    "MenuId": 2,
+    "RestaurantId": 2
   },
   {
     "Name": "Lamb Burger",
@@ -29,7 +32,8 @@
     "Price": 300,
     "PictureUrl": "images/meals/sb-core2.png",
     "MealTypeId": 1,
-    "MenuId": 2
+    "MenuId": 2,
+    "RestaurantId": 2
   },
   {
     "Name": "Fish and Chips",
@@ -37,7 +41,8 @@
     "Price": 250,
     "PictureUrl": "images/meals/sb-react1.png",
     "MealTypeId": 1,
-    "MenuId": 4
+    "MenuId": 4,
+    "RestaurantId": 4
   },
   {
     "Name": "Mozarella Pizza",
@@ -45,7 +50,8 @@
     "Price": 120,
     "PictureUrl": "images/meals/sb-ts1.png",
     "MealTypeId": 1,
-    "MenuId": 5
+    "MenuId": 5,
+    "RestaurantId": 5
   },
   {
     "Name": "Fish Pizza",
@@ -53,7 +59,8 @@
     "Price": 10,
     "PictureUrl": "images/meals/hat-core1.png",
     "MealTypeId": 2,
-    "MenuId": 2
+    "MenuId": 2,
+    "RestaurantId": 2
   },
   {
     "Name": "BBQ Chicken Pizza",
@@ -61,7 +68,8 @@
     "Price": 8,
     "PictureUrl": "images/meals/hat-react1.png",
     "MealTypeId": 2,
-    "MenuId": 4
+    "MenuId": 4,
+    "RestaurantId": 4
   },
   {
     "Name": "Random Pizza",
@@ -69,7 +77,8 @@
     "Price": 15,
     "PictureUrl": "images/meals/hat-react2.png",
     "MealTypeId": 2,
-    "MenuId": 4
+    "MenuId": 4,
+    "RestaurantId": 4
   },
   {
     "Name": "Blue Code Gloves",
@@ -77,7 +86,8 @@
     "Price": 18,
     "PictureUrl": "images/meals/glove-code1.png",
     "MealTypeId": 4,
-    "MenuId": 3
+    "MenuId": 3,
+    "RestaurantId": 3
   },
   {
     "Name": "Green Code Gloves",
@@ -85,7 +95,8 @@
     "Price": 15,
     "PictureUrl": "images/meals/glove-code2.png",
     "MealTypeId": 4,
-    "MenuId": 3
+    "MenuId": 3,
+    "RestaurantId": 3
   },
   {
     "Name": "Purple React Gloves",
@@ -93,7 +104,8 @@
     "Price": 16,
     "PictureUrl": "images/meals/glove-code2.png",
     "MealTypeId": 4,
-    "MenuId": 4
+    "MenuId": 4,
+    "RestaurantId": 4
   },
   {
     "Name": "Green React Gloves",
@@ -101,7 +113,8 @@
     "Price": 14,
     "PictureUrl": "images/meals/glove-react2.png",
     "MealTypeId": 4,
-    "MenuId": 4
+    "MenuId": 4,
+    "RestaurantId": 4
   },
   {
     "Name": "Redis Red Boots",
@@ -109,7 +122,8 @@
     "Price": 250,
     "PictureUrl": "images/meals/boot-redis1.png",
     "MealTypeId": 3,
-    "MenuId": 6
+    "MenuId": 6,
+    "RestaurantId": 6
   },
   {
     "Name": "Core Red Boots",
@@ -117,7 +131,8 @@
     "Price": 189.99,
     "PictureUrl": "images/meals/boot-core2.png",
     "MealTypeId": 3,
-    "MenuId": 2
+    "MenuId": 2,
+    "RestaurantId": 2
   },
   {
     "Name": "Core Purple Boots",
@@ -125,7 +140,8 @@
     "Price": 199.99,
     "PictureUrl": "images/meals/boot-core1.png",
     "MealTypeId": 3,
-    "MenuId": 2
+    "MenuId": 2,
+    "RestaurantId": 2
   },
   {
     "Name": "Angular Purple Boots",
@@ -133,7 +149,8 @@
     "Price": 150,
     "PictureUrl": "images/meals/boot-ang2.png",
     "MealTypeId": 3,
-    "MenuId": 1
+    "MenuId": 1,
+    "RestaurantId": 1
   },
   {
     "Name": "Angular Blue Boots",
@@ -141,6 +158,7 @@
     "Price": 180,
     "PictureUrl": "images/meals/boot-ang1.png",
     "MealTypeId": 3,
-    "MenuId": 1
+    "MenuId": 1,
+    "RestaurantId": 1
   }
 ]

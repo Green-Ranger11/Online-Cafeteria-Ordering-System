@@ -19,6 +19,7 @@ namespace Infrastructure.Data
             return await _context.Meals
                 .Include(m => m.MealType)
                 .Include(m => m.Menu)
+                .Include(m => m.Restaurant)
                 .SingleOrDefaultAsync(p => p.Id == id);
         }
 
@@ -27,6 +28,7 @@ namespace Infrastructure.Data
             return await _context.Meals
                 .Include(m => m.MealType)
                 .Include(m => m.Menu)
+                .Include(m => m.Restaurant)
                 .ToListAsync();
         }
 
@@ -37,7 +39,9 @@ namespace Infrastructure.Data
 
         public async Task<IReadOnlyList<Menu>> GetMenusAsync()
         {
-            return await _context.Menus.ToListAsync();
+            return await _context.Menus
+            .Include(m => m.Restaurant)
+            .ToListAsync();
         }
 
         public async Task<IReadOnlyList<Restaurant>> GetRestaurantsAsync()
