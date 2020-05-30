@@ -5,6 +5,7 @@ import { IRestaurant } from '../shared/models/restaurants';
 import { IType } from '../shared/models/mealType';
 import { map } from 'rxjs/operators';
 import { ShopParams } from '../shared/models/shopParams';
+import { IMeal } from '../shared/models/meal';
 
 @Injectable({
   providedIn: 'root',
@@ -39,6 +40,10 @@ export class ShopService {
           return response.body;
         })
       );
+  }
+
+  getMeal(id: number){
+    return this.http.get<IMeal>(this.baseUrl + 'meals/' + id);
   }
 
   getRestaurants(){
