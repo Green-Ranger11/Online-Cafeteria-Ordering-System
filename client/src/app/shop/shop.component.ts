@@ -11,7 +11,7 @@ import { ShopParams } from '../shared/models/shopParams';
   styleUrls: ['./shop.component.scss'],
 })
 export class ShopComponent implements OnInit {
-  @ViewChild('search', { static: true }) searchTerm: ElementRef;
+  @ViewChild('search', { static: false }) searchTerm: ElementRef;
   meals: IMeal[];
   restaurants: IRestaurant[];
   types: IType[];
@@ -92,7 +92,7 @@ export class ShopComponent implements OnInit {
   }
 
   onReset() {
-    this.searchTerm.nativeElement.value = undefined;
+    this.searchTerm.nativeElement.value = '';
     this.shopParams = new ShopParams();
     this.getMeals();
   }
