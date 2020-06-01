@@ -6,4 +6,5 @@ export interface IMeal {
   pictureUrl: string;
   mealType: string;
   menu: string;
+  restaurant: string;
 }

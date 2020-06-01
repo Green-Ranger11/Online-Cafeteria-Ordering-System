@@ -4,6 +4,7 @@ import { ShopService } from './shop.service';
 import { IRestaurant } from '../shared/models/restaurants';
 import { IType } from '../shared/models/mealType';
 import { ShopParams } from '../shared/models/shopParams';
+import { IMenu } from '../shared/models/menu';
 
 @Component({
   selector: 'app-shop',
@@ -14,6 +15,7 @@ export class ShopComponent implements OnInit {
   @ViewChild('search', { static: false }) searchTerm: ElementRef;
   meals: IMeal[];
   restaurants: IRestaurant[];
+  menus: IMenu[];
   types: IType[];
   shopParams = new ShopParams();
   totalCount: number;
@@ -29,6 +31,7 @@ export class ShopComponent implements OnInit {
     this.getMeals();
     this.getRestaurants();
     this.getTypes();
+    this.getMenus();
   }
 
   getMeals() {
@@ -52,6 +55,15 @@ export class ShopComponent implements OnInit {
     );
   }
 
+  getMenus() {
+    this.shopService.getMenus().subscribe(
+      (response) => {
+        this.menus = [{ id: 0, name: 'All' }, ...response];
+      },
+      (error) => console.log(error)
+    );
+  }
+
   getTypes() {
     this.shopService.getTypes().subscribe(
       (response) => {
@@ -69,6 +81,12 @@ export class ShopComponent implements OnInit {
 
   onRestaurantSelected(restaurantId: number) {
     this.shopParams.restaurantId = restaurantId;
+    this.shopParams.pageNumber = 1;
+    this.getMeals();
+  }
+
+  onMenuSelected(menuId: number) {
+    this.shopParams.menuId = menuId;
     this.shopParams.pageNumber = 1;
     this.getMeals();
   }

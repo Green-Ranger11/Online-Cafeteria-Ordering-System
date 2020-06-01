@@ -6,6 +6,7 @@ import { IType } from '../shared/models/mealType';
 import { map } from 'rxjs/operators';
 import { ShopParams } from '../shared/models/shopParams';
 import { IMeal } from '../shared/models/meal';
+import { IMenu } from '../shared/models/menu';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +25,10 @@ export class ShopService {
 
     if (shopParams.typeId !== 0) {
       params = params.append('typeId', shopParams.typeId.toString());
+    }
+
+    if (shopParams.menuId !== 0) {
+      params = params.append('menuId', shopParams.menuId.toString());
     }
 
     if (shopParams.search){
@@ -48,6 +53,10 @@ export class ShopService {
 
   getRestaurants(){
     return this.http.get<IRestaurant[]>(this.baseUrl + 'meals/restaurants');
+  }
+
+  getMenus(){
+    return this.http.get<IMenu[]>(this.baseUrl + 'meals/menus');
   }
 
   getTypes(){

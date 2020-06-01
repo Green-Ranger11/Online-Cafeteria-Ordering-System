@@ -16,6 +16,7 @@ namespace Core.Specifications
         {
             AddInclude(m => m.MealType);
             AddInclude(m => m.Menu);
+            AddInclude(m => m.Restaurant);
             AddOrderBy(m => m.Name);
             ApplyPaging(mealParams.PageSize * (mealParams.PageIndex -1), mealParams.PageSize);
 
@@ -40,6 +41,7 @@ namespace Core.Specifications
         {
             AddInclude(m => m.MealType);
             AddInclude(m => m.Menu);
+            AddInclude(m => m.Restaurant);
         }
     }
 }
