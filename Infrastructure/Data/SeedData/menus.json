@@ -17,16 +17,16 @@
   {
     "Id": 4,
     "Name": "WEN",
-    "RestaurantId": 4
+    "RestaurantId": 1
   },
   {
     "Id": 5,
     "Name": "DDD",
-    "RestaurantId": 5
+    "RestaurantId": 2
   },
   {
     "Id": 6,
     "Name": "IOIO",
-    "RestaurantId": 6
+    "RestaurantId": 3
   }
 ]

@@ -41,8 +41,8 @@
     "Price": 250,
     "PictureUrl": "images/meals/sb-react1.png",
     "MealTypeId": 1,
-    "MenuId": 4,
-    "RestaurantId": 4
+    "MenuId": 2,
+    "RestaurantId": 2
   },
   {
     "Name": "Mozarella Pizza",
@@ -50,8 +50,8 @@
     "Price": 120,
     "PictureUrl": "images/meals/sb-ts1.png",
     "MealTypeId": 1,
-    "MenuId": 5,
-    "RestaurantId": 5
+    "MenuId": 3,
+    "RestaurantId": 3
   },
   {
     "Name": "Fish Pizza",
@@ -68,8 +68,8 @@
     "Price": 8,
     "PictureUrl": "images/meals/hat-react1.png",
     "MealTypeId": 2,
-    "MenuId": 4,
-    "RestaurantId": 4
+    "MenuId": 1,
+    "RestaurantId": 1
   },
   {
     "Name": "Random Pizza",
@@ -77,8 +77,8 @@
     "Price": 15,
     "PictureUrl": "images/meals/hat-react2.png",
     "MealTypeId": 2,
-    "MenuId": 4,
-    "RestaurantId": 4
+    "MenuId": 1,
+    "RestaurantId": 1
   },
   {
     "Name": "Blue Code Gloves",
@@ -104,8 +104,8 @@
     "Price": 16,
     "PictureUrl": "images/meals/glove-code2.png",
     "MealTypeId": 4,
-    "MenuId": 4,
-    "RestaurantId": 4
+    "MenuId": 1,
+    "RestaurantId": 1
   },
   {
     "Name": "Green React Gloves",
@@ -113,8 +113,8 @@
     "Price": 14,
     "PictureUrl": "images/meals/glove-react2.png",
     "MealTypeId": 4,
-    "MenuId": 4,
-    "RestaurantId": 4
+    "MenuId": 3,
+    "RestaurantId": 3
   },
   {
     "Name": "Redis Red Boots",
@@ -122,8 +122,8 @@
     "Price": 250,
     "PictureUrl": "images/meals/boot-redis1.png",
     "MealTypeId": 3,
-    "MenuId": 6,
-    "RestaurantId": 6
+    "MenuId": 2,
+    "RestaurantId": 2
   },
   {
     "Name": "Core Red Boots",

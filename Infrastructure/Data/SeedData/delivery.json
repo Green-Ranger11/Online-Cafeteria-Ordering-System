@@ -1,0 +1,14 @@
+[
+  {
+    "Id": 1,
+    "ShortName": "Delivered to You",
+    "Description": "Delivered to your location or a location near you",
+    "Price": 10
+  },
+  {
+    "Id": 2,
+    "ShortName": "Pick Up",
+    "Description": "Choose to pick up your meal",
+    "Price": 0
+  }
+]
