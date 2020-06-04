@@ -1,18 +1,14 @@
 [
   {
-    "Id": 1,
     "Name": "Breakfast"
   },
   {
-    "Id": 2,
     "Name": "Lunch"
   },
   {
-    "Id": 3,
     "Name": "Dinner"
   },
   {
-    "Id": 4,
     "Name": "AllDay"
   }
 ]

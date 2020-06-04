@@ -3,12 +3,27 @@ import { CommonModule } from '@angular/common';
 import { CheckoutComponent } from './checkout.component';
 import { Routes } from '@angular/router';
 import { CheckoutRoutingModule } from './checkout-routing.module';
+import { SharedModule } from '../shared/shared.module';
+import { CheckoutAddressComponent } from './checkout-address/checkout-address.component';
+import { CheckoutDeliveryComponent } from './checkout-delivery/checkout-delivery.component';
+import { CheckoutReviewComponent } from './checkout-review/checkout-review.component';
+import { CheckoutPaymentComponent } from './checkout-payment/checkout-payment.component';
+import { CheckoutSuccessComponent } from './checkout-success/checkout-success.component';
+import { CheckoutPayrollComponent } from './checkout-payroll/checkout-payroll.component';
 
 @NgModule({
-  declarations: [CheckoutComponent],
+  declarations: [
+    CheckoutComponent,
+    CheckoutAddressComponent,
+    CheckoutDeliveryComponent,
+    CheckoutReviewComponent,
+    CheckoutPaymentComponent,
+    CheckoutSuccessComponent,
+    CheckoutPayrollComponent,
+  ],
   imports: [
     CommonModule,
-    CheckoutRoutingModule
-  ]
+    CheckoutRoutingModule,
+    SharedModule],
 })
-export class CheckoutModule { }
+export class CheckoutModule {}

@@ -81,7 +81,7 @@
     "RestaurantId": 1
   },
   {
-    "Name": "Blue Code Gloves",
+    "Name": "Fiooid",
     "Description": "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
     "Price": 18,
     "PictureUrl": "images/meals/glove-code1.png",
@@ -90,7 +90,7 @@
     "RestaurantId": 3
   },
   {
-    "Name": "Green Code Gloves",
+    "Name": "Food2",
     "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
     "Price": 15,
     "PictureUrl": "images/meals/glove-code2.png",
@@ -99,7 +99,7 @@
     "RestaurantId": 3
   },
   {
-    "Name": "Purple React Gloves",
+    "Name": "This Food",
     "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa.",
     "Price": 16,
     "PictureUrl": "images/meals/glove-code2.png",
@@ -108,7 +108,7 @@
     "RestaurantId": 1
   },
   {
-    "Name": "Green React Gloves",
+    "Name": "That Food",
     "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
     "Price": 14,
     "PictureUrl": "images/meals/glove-react2.png",
@@ -117,7 +117,7 @@
     "RestaurantId": 3
   },
   {
-    "Name": "Redis Red Boots",
+    "Name": "This food",
     "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
     "Price": 250,
     "PictureUrl": "images/meals/boot-redis1.png",
@@ -126,7 +126,7 @@
     "RestaurantId": 2
   },
   {
-    "Name": "Core Red Boots",
+    "Name": "Foodsdasd",
     "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
     "Price": 189.99,
     "PictureUrl": "images/meals/boot-core2.png",
@@ -135,7 +135,7 @@
     "RestaurantId": 2
   },
   {
-    "Name": "Core Purple Boots",
+    "Name": "Burger",
     "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
     "Price": 199.99,
     "PictureUrl": "images/meals/boot-core1.png",
@@ -144,7 +144,7 @@
     "RestaurantId": 2
   },
   {
-    "Name": "Angular Purple Boots",
+    "Name": "Cereal",
     "Description": "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
     "Price": 150,
     "PictureUrl": "images/meals/boot-ang2.png",
@@ -153,7 +153,7 @@
     "RestaurantId": 1
   },
   {
-    "Name": "Angular Blue Boots",
+    "Name": "Crackers",
     "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
     "Price": 180,
     "PictureUrl": "images/meals/boot-ang1.png",

@@ -1,0 +1,31 @@
+<div class="mt-4" [formGroup]="checkoutForm">
+    <div class="d-flex justify-content-center">
+        <h4>Delivery Address</h4>
+    </div>
+    <div class="d-flex flex-column align-items-center" formGroupName="addressForm">
+        <div class="form-group col-6 mt-3">
+            <app-text-input [label]="'First Name'" formControlName="firstName"></app-text-input>
+        </div>
+        <div class="form-group col-6">
+            <app-text-input [label]="'Last Name'" formControlName="lastName"></app-text-input>
+        </div>
+        <div class="form-group col-6">
+            <app-text-input [label]="'Building'" formControlName="building"></app-text-input>
+        </div>
+        <div class="form-group col-6">
+            <app-text-input [label]="'Room'" formControlName="room"></app-text-input>
+        </div>
+        <button class="btn btn-outline-success">
+            Save as default address
+        </button>
+    </div>
+</div>
+
+<div class="float-none d-flex justify-content-between flex-column flex-lg-row my-5">
+    <button class="btn btn-outline-primary" routerLink="/basket">
+        <i class="fa fa-angle-left"></i> Back to Basket
+    </button>
+    <button class="btn btn-primary" cdkStepperNext>
+        Go To Delivery <i class="fa fa-angle-right"></i>
+    </button>
+</div>

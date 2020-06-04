@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Migrations
 {
-    public partial class OrderEntityAdded : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,10 +12,10 @@ namespace Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ShortName = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    Price = table.Column<double>(type: "decimal(18,2)", nullable: false)
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,7 +27,7 @@ namespace Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -40,7 +40,7 @@ namespace Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -53,7 +53,7 @@ namespace Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     BuyerEmail = table.Column<string>(nullable: true),
                     OrderDate = table.Column<DateTimeOffset>(nullable: false),
                     ShipToAddress_FirstName = table.Column<string>(nullable: true),
@@ -61,7 +61,7 @@ namespace Infrastructure.Migrations
                     ShipToAddress_Building = table.Column<string>(nullable: true),
                     ShipToAddress_Room = table.Column<string>(nullable: true),
                     DeliveryMethodId = table.Column<int>(nullable: true),
-                    Subtotal = table.Column<double>(nullable: false),
+                    Subtotal = table.Column<decimal>(nullable: false),
                     Status = table.Column<string>(nullable: false),
                     PaymentIntentId = table.Column<string>(nullable: true)
                 },
@@ -81,7 +81,7 @@ namespace Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
                     RestaurantId = table.Column<int>(nullable: false)
                 },
@@ -92,8 +92,7 @@ namespace Infrastructure.Migrations
                         name: "FK_Menus_Restaurants_RestaurantId",
                         column: x => x.RestaurantId,
                         principalTable: "Restaurants",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -101,11 +100,11 @@ namespace Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ItemOrdered_MealItemId = table.Column<int>(nullable: true),
                     ItemOrdered_MealName = table.Column<string>(nullable: true),
                     ItemOrdered_PictureUrl = table.Column<string>(nullable: true),
-                    Price = table.Column<double>(type: "decimal(18,2)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Quantity = table.Column<int>(nullable: false),
                     OrderId = table.Column<int>(nullable: true)
                 },
@@ -125,10 +124,10 @@ namespace Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 100, nullable: false),
                     Description = table.Column<string>(maxLength: 255, nullable: false),
-                    Price = table.Column<double>(type: "decimal(18,2)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     PictureUrl = table.Column<string>(nullable: false),
                     MealTypeId = table.Column<int>(nullable: false),
                     MenuId = table.Column<int>(nullable: false),
@@ -141,20 +140,17 @@ namespace Infrastructure.Migrations
                         name: "FK_Meals_MealTypes_MealTypeId",
                         column: x => x.MealTypeId,
                         principalTable: "MealTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Meals_Menus_MenuId",
                         column: x => x.MenuId,
                         principalTable: "Menus",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Meals_Restaurants_RestaurantId",
                         column: x => x.RestaurantId,
                         principalTable: "Restaurants",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(

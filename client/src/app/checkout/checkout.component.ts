@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-checkout',
@@ -6,10 +7,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
+  checkoutForm: FormGroup;
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.createCheckOutForm();
+  }
+
+  createCheckOutForm() {
+    this.checkoutForm = this.fb.group({
+      addressForm: this.fb.group({
+        firstName: [null, Validators.required],
+        lastName: [null, Validators.required],
+        building: [null, Validators.required],
+        room: [null, Validators.required],
+      }),
+      deliveryForm: this.fb.group({
+        deliveryMethod: [null, Validators.required]
+      }),
+      paymentForm: this.fb.group({
+        nameOnCard: [null, Validators.required]
+      })
+    });
   }
 
 }

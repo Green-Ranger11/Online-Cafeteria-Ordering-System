@@ -1,12 +1,20 @@
 [
   {
-    "Id": 1,
     "ShortName": "Delivered to You",
-    "Description": "Delivered to your location or a location near you",
+    "Description": "Delivered to your location on Campus",
     "Price": 10
   },
   {
-    "Id": 2,
+    "ShortName": "Delivered to Offsitelocation 1",
+    "Description": "Delivered to Offsitelocation 1",
+    "Price": 5
+  },
+  {
+    "ShortName": "Delivered to OffsiteLocation 2",
+    "Description": "Delivered to Offsitelocation 2",
+    "Price": 5
+  },
+  {
     "ShortName": "Pick Up",
     "Description": "Choose to pick up your meal",
     "Price": 0

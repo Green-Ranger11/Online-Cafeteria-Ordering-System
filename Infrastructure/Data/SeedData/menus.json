@@ -1,31 +1,25 @@
 [
   {
-    "Id": 1,
     "Name": "PIZZARIA",
     "RestaurantId": 1
   },
   {
-    "Id": 2,
     "Name": "MACCAS",
     "RestaurantId": 2
   },
   {
-    "Id": 3,
     "Name": "BK BEST",
     "RestaurantId": 3
   },
   {
-    "Id": 4,
     "Name": "WEN",
     "RestaurantId": 1
   },
   {
-    "Id": 5,
     "Name": "DDD",
     "RestaurantId": 2
   },
   {
-    "Id": 6,
     "Name": "IOIO",
     "RestaurantId": 3
   }
