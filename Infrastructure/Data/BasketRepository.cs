@@ -27,7 +27,7 @@ namespace Infrastructure.Data
         }
 
         // Create AND Update
-        public async Task<CustomerBasket> UpdateBastketAsync(CustomerBasket basket)
+        public async Task<CustomerBasket> UpdateBasketAsync(CustomerBasket basket)
         {
             var created = await _database.StringSetAsync(basket.Id, JsonSerializer.Serialize(basket), TimeSpan.FromDays(30));
 

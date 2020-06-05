@@ -30,7 +30,7 @@ namespace API.Controllers
         {
             var customerBasket = __mapper.Map<CustomerBasketDto,CustomerBasket>(basket);
 
-            var updatedBasket = await _basketRepository.UpdateBastketAsync(customerBasket);
+            var updatedBasket = await _basketRepository.UpdateBasketAsync(customerBasket);
 
             return Ok(updatedBasket);
         }
