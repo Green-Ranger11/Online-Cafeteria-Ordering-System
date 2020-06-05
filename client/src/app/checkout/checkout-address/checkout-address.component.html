@@ -15,7 +15,9 @@
         <div class="form-group col-6">
             <app-text-input [label]="'Room'" formControlName="room"></app-text-input>
         </div>
-        <button class="btn btn-outline-success">
+        <button (click)="saveUserAddress()"
+            [disabled]="!checkoutForm.get('addressForm').valid || !checkoutForm.get('addressForm').dirty"
+            class="btn btn-outline-success">
             Save as default address
         </button>
     </div>
