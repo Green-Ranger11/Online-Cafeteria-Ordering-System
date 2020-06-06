@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Infrastructure.Migrations
+namespace Infrastructure.Data.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class PhotoEntityAdded : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -128,7 +128,6 @@ namespace Infrastructure.Migrations
                     Name = table.Column<string>(maxLength: 100, nullable: false),
                     Description = table.Column<string>(maxLength: 255, nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    PictureUrl = table.Column<string>(nullable: false),
                     MealTypeId = table.Column<int>(nullable: false),
                     MenuId = table.Column<int>(nullable: false),
                     RestaurantId = table.Column<int>(nullable: false)
@@ -151,6 +150,28 @@ namespace Infrastructure.Migrations
                         column: x => x.RestaurantId,
                         principalTable: "Restaurants",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Photo",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PictureUrl = table.Column<string>(nullable: true),
+                    FileName = table.Column<string>(nullable: true),
+                    IsMain = table.Column<bool>(nullable: false),
+                    MealId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Photo", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Photo_Meals_MealId",
+                        column: x => x.MealId,
+                        principalTable: "Meals",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -182,15 +203,29 @@ namespace Infrastructure.Migrations
                 name: "IX_Orders_DeliveryMethodId",
                 table: "Orders",
                 column: "DeliveryMethodId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Photo_MealId",
+                table: "Photo",
+                column: "MealId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "OrderItems");
+
+            migrationBuilder.DropTable(
+                name: "Photo");
+
+            migrationBuilder.DropTable(
+                name: "Orders");
+
+            migrationBuilder.DropTable(
                 name: "Meals");
 
             migrationBuilder.DropTable(
-                name: "OrderItems");
+                name: "DeliveryMethods");
 
             migrationBuilder.DropTable(
                 name: "MealTypes");
@@ -199,13 +234,7 @@ namespace Infrastructure.Migrations
                 name: "Menus");
 
             migrationBuilder.DropTable(
-                name: "Orders");
-
-            migrationBuilder.DropTable(
                 name: "Restaurants");
-
-            migrationBuilder.DropTable(
-                name: "DeliveryMethods");
         }
     }
 }

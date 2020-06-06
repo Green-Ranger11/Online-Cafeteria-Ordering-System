@@ -30,7 +30,7 @@ namespace Infrastructure.Services
             foreach (var item in basket.Items)
             {
                 var mealItem = await _unitOfWork.Repository<Meal>().GetByIdAsync(item.Id);
-                var itemOrdered = new MealItemOrdered(mealItem.Id, mealItem.Name, mealItem.PictureUrl);
+                var itemOrdered = new MealItemOrdered(mealItem.Id, mealItem.Name, mealItem.Photos.FirstOrDefault(x => x.IsMain)?.PictureUrl);
                 var orderItem = new OrderItem(itemOrdered, mealItem.Price, item.Quantity);
                 items.Add(orderItem);
             }

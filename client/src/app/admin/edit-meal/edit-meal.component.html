@@ -1,0 +1,21 @@
+<section class="meal-edit mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="tab-panel">
+          <tabset class="meal-tabset">
+            <tab heading="Edit Meal">
+              <div class="col-lg-8">
+                <app-edit-meal-form [meal]="mealFormValues" [restaurants]="restaurants" [types]="types" [menus]="menus">
+                </app-edit-meal-form>
+              </div>
+            </tab>
+            <tab heading="Edit Photos">
+              <app-edit-meal-photos [meal]="meal"></app-edit-meal-photos>
+            </tab>
+          </tabset>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

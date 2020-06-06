@@ -7,6 +7,7 @@
     <a class="p-2">Menus</a>
     <a class="p-2" href="#">Meal Plans</a>
     <a class="p-2" routerLink="/test-error" routerLinkActive="active">Errors</a>
+    <a *ngIf="(isAdmin$ | async)" class="p-2" routerLink="/admin" routerLinkActive="active">Admin</a>
   </nav>
   <div class="d-flex align-items-center">
     <a routerLink="/basket" class="position-relative">

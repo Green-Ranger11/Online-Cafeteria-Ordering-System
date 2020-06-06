@@ -62,11 +62,22 @@ namespace Infrastructure.Data
                 {
                     var mealsData = File.ReadAllText("../Infrastructure/Data/SeedData/meals.json");
 
-                    var meals = JsonSerializer.Deserialize<List<Meal>>(mealsData);
+                    var meals = JsonSerializer.Deserialize<List<MealSeedModel>>(mealsData);
 
                     foreach (var item in meals)
                     {
-                        context.Meals.Add(item);
+                        var pictureFileName = item.PictureUrl.Substring(16);
+                        var meal = new Meal
+                        {
+                            Name = item.Name,
+                            Description = item.Description,
+                            Price = item.Price,
+                            MealTypeId = item.MealTypeId,
+                            RestaurantId = item.RestaurantId,
+                            MenuId = item.MenuId
+                        };
+                        meal.AddPhoto(item.PictureUrl, pictureFileName);
+                        context.Meals.Add(meal);
                     }
 
                     await context.SaveChangesAsync();

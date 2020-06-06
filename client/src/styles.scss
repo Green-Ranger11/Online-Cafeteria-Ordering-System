@@ -1,26 +1,66 @@
 /* You can add global styles to this file, and also import other style files */
 
 .xng-breadcrumb-root {
-    padding: 8px 16px;
-    display: inline;
-    border-radius: 0;
+  padding: 8px 16px;
+  display: inline;
+  border-radius: 0;
 }
 
 label.xng-breadcrumb-trail {
-    margin-bottom: 0;
-    color:#0098a5;
+  margin-bottom: 0;
+  color: #0098a5;
 }
 
 .xng-breadcrumb-separator {
-    padding: 0 0;
+  padding: 0 0;
 }
 
 .list-group-item.active {
-    color:#1a1a1a;
-    background-color: #0098a5;
-    border-color: #0098a5;
+  color: #1a1a1a;
+  background-color: #0098a5;
+  border-color: #0098a5;
 }
 
 .StripeElement {
-    height: 3em;
+  height: 3em;
+}
+
+.meal-tabset > .nav-tabs > li.open > a,
+.meal-tabset > .nav-tabs > li:hover > a {
+  border: 0;
+  background: none !important;
+  color: #333333;
+}
+
+.meal-tabset > .nav-tabs > li.open > a > i,
+.meal-tabset > .nav-tabs > li:hover > a > i {
+  color: #a6a6a6;
+}
+
+.meal-tabset > .nav-tabs > li.open .dropdown-menu,
+.meal-tabset > .nav-tabs > li:hover .dropdown-menu {
+  margin-top: 0px;
+}
+
+.meal-tabset > .nav-tabs > li.active {
+  border-bottom: 4px solid #0098a5;
+  position: relative;
+}
+
+.meal-tabset > .nav-tabs > li.active > a {
+  border: 0 !important;
+  color: #333333;
+}
+
+.meal-tabset > .nav-tabs > li.active > a > i {
+  color: #404040;
+}
+
+.meal-tabset > .tab-content {
+  margin-top: -3px;
+  background-color: #fff;
+  border: 0;
+  border-top: 1px solid #eee;
+  padding: 15px 0;
+  width: 100%;
 }

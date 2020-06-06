@@ -13,6 +13,7 @@ import { IMenu } from '../shared/models/menu';
 })
 export class ShopService {
   baseUrl = 'https://localhost:5001/api/';
+  shopParams = new ShopParams();
 
   constructor(private http: HttpClient) {}
 
@@ -20,7 +21,10 @@ export class ShopService {
     let params = new HttpParams();
 
     if (shopParams.restaurantId !== 0) {
-      params = params.append('restaurantId', shopParams.restaurantId.toString());
+      params = params.append(
+        'restaurantId',
+        shopParams.restaurantId.toString()
+      );
     }
 
     if (shopParams.typeId !== 0) {
@@ -31,35 +35,44 @@ export class ShopService {
       params = params.append('menuId', shopParams.menuId.toString());
     }
 
-    if (shopParams.search){
-      params = params.append('search', shopParams.search)
+    if (shopParams.search) {
+      params = params.append('search', shopParams.search);
     }
 
     params = params.append('sort', shopParams.sort);
     params = params.append('pageIndex', shopParams.pageNumber.toString());
     params = params.append('pageIndex', shopParams.pageSize.toString());
 
-    return this.http.get<IPagination>(this.baseUrl + 'meals', {observe: 'response', params})
+    return this.http
+      .get<IPagination>(this.baseUrl + 'meals', { observe: 'response', params })
       .pipe(
-        map(response => {
+        map((response) => {
           return response.body;
         })
       );
   }
 
-  getMeal(id: number){
+  getShopParams() {
+    return this.shopParams;
+  }
+
+  setShopParams(params: ShopParams) {
+    this.shopParams = params;
+  }
+
+  getMeal(id: number) {
     return this.http.get<IMeal>(this.baseUrl + 'meals/' + id);
   }
 
-  getRestaurants(){
+  getRestaurants() {
     return this.http.get<IRestaurant[]>(this.baseUrl + 'meals/restaurants');
   }
 
-  getMenus(){
+  getMenus() {
     return this.http.get<IMenu[]>(this.baseUrl + 'meals/menus');
   }
 
-  getTypes(){
+  getTypes() {
     return this.http.get<IType[]>(this.baseUrl + 'meals/types');
   }
 }
