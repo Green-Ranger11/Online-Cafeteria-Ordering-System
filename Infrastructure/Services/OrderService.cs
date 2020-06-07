@@ -29,9 +29,17 @@ namespace Infrastructure.Services
             var items = new List<OrderItem>();
             foreach (var item in basket.Items)
             {
+                // Get meal - but just for Id since it won't grab photos
                 var mealItem = await _unitOfWork.Repository<Meal>().GetByIdAsync(item.Id);
-                var itemOrdered = new MealItemOrdered(mealItem.Id, mealItem.Name, mealItem.Photos.FirstOrDefault(x => x.IsMain)?.PictureUrl);
-                var orderItem = new OrderItem(itemOrdered, mealItem.Price, item.Quantity);
+                // Create Spec cause we need to get Meals with Photos or Photo is null when viewed in Orders
+                var mealspec = new MealsWithTypesAndMenusSpecification(mealItem.Id);
+                // Get meal with Photos and other entitys
+                var meal = await _unitOfWork.Repository<Meal>().GetEnitityWithSpec(mealspec);
+                // Create Item Ordered
+                var itemOrdered = new MealItemOrdered(meal.Id, meal.Name, meal.Photos.FirstOrDefault(x => x.IsMain)?.PictureUrl);
+                // Create orderItem
+                var orderItem = new OrderItem(itemOrdered, meal.Price, item.Quantity);
+                // Add to list
                 items.Add(orderItem);
             }
 

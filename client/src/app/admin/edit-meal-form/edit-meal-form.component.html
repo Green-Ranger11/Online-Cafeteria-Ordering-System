@@ -2,7 +2,7 @@
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="name">Meal Name</label>
-        <input [ngClass]="{'is-invalid': name.invalid && (name.dirty || name.touched)}" required type="text"
+        <input [ngClass]="{'is-invalid': name?.invalid && (name?.dirty || name?.touched)}" required type="text"
           class="form-control" id="name" placeholder="Meal Name" name="name" #name="ngModel"
           [(ngModel)]="meal.name">
         <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">

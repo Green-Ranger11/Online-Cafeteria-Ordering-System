@@ -15,7 +15,7 @@ import { forkJoin } from 'rxjs';
 })
 export class EditMealComponent implements OnInit {
   meal: MealFormValues;
-  mealFormValues: MealFormValues;
+  mealFormValues = new MealFormValues();
   restaurants: IRestaurant[];
   menus: IMenu[];
   types: IType[];
