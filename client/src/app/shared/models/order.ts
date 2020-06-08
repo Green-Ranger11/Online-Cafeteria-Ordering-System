@@ -17,6 +17,7 @@ export interface IOrder {
   subtotal: number;
   status: string;
   total: number;
+  paymentMethod: boolean;
 }
 
 export interface IOrderItem {

@@ -15,7 +15,8 @@ namespace Core.Entities.OrderAggregate
         Address shipToAddress, 
         DeliveryMethod deliveryMethod, 
         decimal subtotal,
-        string paymentIntentId)
+        string paymentIntentId,
+        bool paymentMethod)
         {
             BuyerEmail = buyerEmail;
             ShipToAddress = shipToAddress;
@@ -23,6 +24,7 @@ namespace Core.Entities.OrderAggregate
             OrderItems = orderItems;
             Subtotal = subtotal;
             PaymentIntentId = paymentIntentId;
+            PaymentMethod = paymentMethod;
         }
 
         public string BuyerEmail { get; set; }
@@ -32,6 +34,8 @@ namespace Core.Entities.OrderAggregate
         public IReadOnlyList<OrderItem> OrderItems { get; set; }
         public decimal Subtotal { get; set; }
         public OrderStatus Status { get; set; } = OrderStatus.Pending;
+        // If True pay by credit card if False pay by Payroll
+        public bool PaymentMethod { get; set; } = true;
         public string PaymentIntentId { get; set; }
 
         public decimal GetTotal()

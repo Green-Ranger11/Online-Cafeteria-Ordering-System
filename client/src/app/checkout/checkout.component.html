@@ -11,8 +11,12 @@
                 <cdk-step [label]="'Review'">
                     <app-checkout-review [appSteppper]="appStepper"></app-checkout-review>
                 </cdk-step>
+                <cdk-step [label]="'Options'">
+                    <app-payment-options (choice)="paymentChoice($event)"></app-payment-options>
+                </cdk-step>
                 <cdk-step [label]="'Payment'">
-                    <app-checkout-payment [checkoutForm]="checkoutForm" ></app-checkout-payment>
+                    <app-checkout-payment *ngIf="choice" [checkoutForm]="checkoutForm"></app-checkout-payment>
+                    <app-checkout-payment-payroll *ngIf="!choice"></app-checkout-payment-payroll>
                 </cdk-step>
             </app-stepper>
         </div>

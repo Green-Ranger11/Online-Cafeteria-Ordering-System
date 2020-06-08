@@ -1,0 +1,21 @@
+
+<div class="d-flex justify-content-center mt-5">
+    <h4>Select Payment Method</h4>
+</div>
+<div class="d-flex justify-content-around flex-column flex-lg-row my-5">
+    <button class="btn" (click)="creditCard = true; onClick(creditCard)" cdkStepperNext>
+        <i class="fa fa-credit-card fa-5x"></i>
+    </button>
+    <button class="btn" (click)="creditCard = false; onClick(creditCard)" cdkStepperNext>
+        <i class="fa fa-calendar fa-5x"></i>
+    </button>
+</div>
+<div class="d-flex justify-content-around flex-column flex-lg-row my-5">
+    <p>Credit Card</p>
+    <p>Payroll</p>
+</div>
+<div class="float-none d-flex justify-content-between flex-column flex-lg-row my-5">
+    <button class="btn btn-outline-primary" cdkStepperPrevious>
+        <i class="fa fa-angle-left"></i> Back to Review
+    </button>
+</div>

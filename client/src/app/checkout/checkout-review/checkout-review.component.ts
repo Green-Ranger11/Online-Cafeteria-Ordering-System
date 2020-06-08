@@ -11,16 +11,8 @@ import { CdkStepper } from '@angular/cdk/stepper';
 export class CheckoutReviewComponent implements OnInit {
   @Input() appSteppper: CdkStepper;
 
-  constructor(private basketService: BasketService, private toastr: ToastrService) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  createPaymentIntent() {
-    return this.basketService.createPaymentIntent().subscribe((response: any) => {
-      this.appSteppper.next();
-    }, error => {
-      console.error(error);
-    });
   }
 }

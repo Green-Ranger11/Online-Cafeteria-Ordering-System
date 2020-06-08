@@ -23,6 +23,7 @@ declare var Stripe;
   styleUrls: ['./checkout-payment.component.scss'],
 })
 export class CheckoutPaymentComponent implements AfterViewInit, OnDestroy {
+  @Input() choice = true;
   @Input() checkoutForm: FormGroup;
   @ViewChild('cardNumber', { static: true }) cardNumberElement: ElementRef;
   @ViewChild('cardExpiry', { static: true }) cardExpiryElement: ElementRef;

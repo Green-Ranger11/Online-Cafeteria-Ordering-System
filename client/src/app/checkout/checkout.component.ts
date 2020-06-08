@@ -12,7 +12,8 @@ import { IBasketTotals } from '../shared/models/basket';
 })
 export class CheckoutComponent implements OnInit {
   checkoutForm: FormGroup;
-  basketTotals$: Observable<IBasketTotals>
+  basketTotals$: Observable<IBasketTotals>;
+  choice: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -25,6 +26,10 @@ export class CheckoutComponent implements OnInit {
     this.getAddressFormValues();
     this.getDeliveryMethodValue();
     this.basketTotals$ = this.basketService.basketTotals$;
+  }
+
+  paymentChoice(choice: boolean) {
+    return this.choice = choice;
   }
 
   createCheckOutForm() {
