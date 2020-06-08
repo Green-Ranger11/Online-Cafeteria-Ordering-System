@@ -115,7 +115,8 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteMeal(int id)
         {
-            var meal = await _unitOfWork.Repository<Meal>().GetByIdAsync(id);
+            var spec = new MealsWithTypesAndMenusSpecification(id);
+            var meal = await _unitOfWork.Repository<Meal>().GetEnitityWithSpec(spec);
 
             foreach (var photo in meal.Photos)
             {

@@ -133,6 +133,7 @@ export class CheckoutPaymentComponent implements AfterViewInit, OnDestroy {
         .get('deliveryForm')
         .get('deliveryMethod').value,
       shipToAddress: this.checkoutForm.get('addressForm').value,
+      paymentMethod: true
     };
   }
 }

@@ -4,6 +4,7 @@ export interface IOrderToCreate {
   basketId: string;
   deliveryMethodId: number;
   shipToAddress: IAddress;
+  paymentMethod: boolean;
 }
 
 export interface IOrder {
