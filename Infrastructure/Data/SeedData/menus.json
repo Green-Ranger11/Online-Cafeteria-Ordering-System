@@ -1,26 +1,26 @@
 [
   {
-    "Name": "PIZZARIA",
+    "Name": "Best Pizzas",
     "RestaurantId": 1
   },
   {
-    "Name": "MACCAS",
+    "Name": "McDonald Specials",
     "RestaurantId": 2
   },
   {
-    "Name": "BK BEST",
+    "Name": "BK Favourites",
     "RestaurantId": 3
   },
   {
-    "Name": "WEN",
+    "Name": "Vegetarian",
     "RestaurantId": 1
   },
   {
-    "Name": "DDD",
+    "Name": "Desserts",
     "RestaurantId": 2
   },
   {
-    "Name": "IOIO",
+    "Name": "Subs",
     "RestaurantId": 3
   }
 ]

@@ -66,6 +66,14 @@ namespace API.Controllers
             return Ok(await _unitOfWork.Repository<Menu>().ListAllAsync());
         }
 
+        [HttpGet("menus/{id}")]
+        public async Task<ActionResult<IReadOnlyList<Menu>>> GetMenusForRestaurant(int id)
+        {
+            var spec = new MenuByRestaurant(id);
+            var menus = await _unitOfWork.Repository<Menu>().GetEnititiesWithSpec(spec);
+            return Ok(menus);
+        }
+
         [HttpGet("restaurants")]
         public async Task<ActionResult<IReadOnlyList<Restaurant>>> GetRestaurants()
         {
@@ -171,7 +179,7 @@ namespace API.Controllers
         {
             var spec = new MealsWithTypesAndMenusSpecification(id);
             var meal = await _unitOfWork.Repository<Meal>().GetEnitityWithSpec(spec);
-            
+
             var photo = meal.Photos.SingleOrDefault(x => x.Id == photoId);
 
             if (photo != null)
@@ -188,11 +196,11 @@ namespace API.Controllers
             }
 
             meal.RemovePhoto(photoId);
-            
+
             _unitOfWork.Repository<Meal>().Update(meal);
-            
+
             var result = await _unitOfWork.Complete();
-            
+
             if (result <= 0) return BadRequest(new ApiResponse(400, "Problem adding meal product"));
 
             return Ok();
@@ -206,17 +214,17 @@ namespace API.Controllers
             var meal = await _unitOfWork.Repository<Meal>().GetEnitityWithSpec(spec);
 
             if (meal.Photos.All(x => x.Id != photoId)) return NotFound();
-            
+
             meal.SetMainPhoto(photoId);
-            
+
             _unitOfWork.Repository<Meal>().Update(meal);
-            
+
             var result = await _unitOfWork.Complete();
-            
+
             if (result <= 0) return BadRequest(new ApiResponse(400, "Problem adding meal product"));
 
             return _mapper.Map<Meal, MealToReturnDto>(meal);
         }
     }
-    
+
 }

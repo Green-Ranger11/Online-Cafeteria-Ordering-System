@@ -1,0 +1,28 @@
+<div class="container">
+    <tabset [justified]="true">
+        <tab>
+            <ng-template tabHeading>
+                <div class="container">
+                    <img src="../../assets/images/pngwing.com (2).png" style="height: 100px;">
+                </div>
+            </ng-template>
+            <app-menu-details [restaurantSelected]="1"></app-menu-details>
+        </tab>
+        <tab>
+            <ng-template tabHeading>
+                <div class="container">
+                    <img src="../../assets/images/pngwing.com (1).png" style="height: 100px;">
+                </div>
+            </ng-template>
+            <app-menu-details [restaurantSelected]="2"></app-menu-details>
+        </tab>
+        <tab>
+            <ng-template tabHeading>
+                <div class="container">
+                    <img src="../../assets/images/pngwing.com.png" style="height: 100px;">
+                </div>
+            </ng-template>
+            <app-menu-details [restaurantSelected]="3"></app-menu-details>
+        </tab>
+    </tabset>
+</div>

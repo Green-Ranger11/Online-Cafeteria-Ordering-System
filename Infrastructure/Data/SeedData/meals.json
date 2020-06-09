@@ -1,63 +1,63 @@
 [
   {
-    "Name": "Fish Burger",
+    "Name": "Mozzarella Pizza",
     "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
     "Price": 200,
-    "PictureUrl": "images/meals/sb-ang1.png",
-    "MealTypeId": 1,
-    "MenuId": 1,
-    "RestaurantId": 1
-  },
-  {
-    "Name": "Chicken Burger",
-    "Description": "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
-    "Price": 150,
-    "PictureUrl": "images/meals/sb-ang2.png",
-    "MealTypeId": 1,
-    "MenuId": 1,
-    "RestaurantId": 1
-  },
-  {
-    "Name": "Beef Burger",
-    "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
-    "Price": 180,
-    "PictureUrl": "images/meals/sb-core1.png",
-    "MealTypeId": 1,
-    "MenuId": 2,
-    "RestaurantId": 2
-  },
-  {
-    "Name": "Lamb Burger",
-    "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
-    "Price": 300,
-    "PictureUrl": "images/meals/sb-core2.png",
-    "MealTypeId": 1,
-    "MenuId": 2,
-    "RestaurantId": 2
-  },
-  {
-    "Name": "Fish and Chips",
-    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-    "Price": 250,
-    "PictureUrl": "images/meals/sb-react1.png",
-    "MealTypeId": 1,
-    "MenuId": 2,
-    "RestaurantId": 2
-  },
-  {
-    "Name": "Mozarella Pizza",
-    "Description": "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
-    "Price": 120,
-    "PictureUrl": "images/meals/sb-ts1.png",
+    "PictureUrl": "images/meals/10-pizza-png-image.png",
     "MealTypeId": 1,
     "MenuId": 3,
+    "RestaurantId": 1
+  },
+  {
+    "Name": "Cheese Pizza",
+    "Description": "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
+    "Price": 150,
+    "PictureUrl": "images/meals/11-pizza-png-image.png",
+    "MealTypeId": 1,
+    "MenuId": 3,
+    "RestaurantId": 1
+  },
+  {
+    "Name": "McChicken",
+    "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
+    "Price": 180,
+    "PictureUrl": "images/meals/16-hamburger-burger-png-image-mac-burger.png",
+    "MealTypeId": 1,
+    "MenuId": 2,
+    "RestaurantId": 2
+  },
+  {
+    "Name": "Big Max",
+    "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
+    "Price": 300,
+    "PictureUrl": "images/meals/9-hamburger-burger-png-image.png",
+    "MealTypeId": 1,
+    "MenuId": 2,
+    "RestaurantId": 2
+  },
+  {
+    "Name": "Fillet o Fish",
+    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Price": 250,
+    "PictureUrl": "images/meals/12-hamburger-burger-png-image.png",
+    "MealTypeId": 1,
+    "MenuId": 2,
+    "RestaurantId": 2
+  },
+  {
+    "Name": "Whopper Jr",
+    "Description": "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
+    "Price": 120,
+    "PictureUrl": "images/meals/39-hamburger-burger-png-image.png",
+    "MealTypeId": 1,
+    "MenuId": 1,
     "RestaurantId": 3
   },
   {
-    "Name": "Fish Pizza",
+    "Name": "Cheese Burger",
     "Description": "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
     "Price": 10,
-    "PictureUrl": "images/meals/hat-core1.png",
+    "PictureUrl": "images/meals/27-hamburger-burger-png-image.png",
     "MealTypeId": 2,
     "MenuId": 2,
     "RestaurantId": 2
@@ -66,99 +66,99 @@
     "Name": "BBQ Chicken Pizza",
     "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
     "Price": 8,
-    "PictureUrl": "images/meals/hat-react1.png",
+    "PictureUrl": "images/meals/55-pizza-png-image.png",
     "MealTypeId": 2,
-    "MenuId": 1,
+    "MenuId": 3,
     "RestaurantId": 1
   },
   {
-    "Name": "Random Pizza",
+    "Name": "Meat lovers Pizza",
     "Description": "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
     "Price": 15,
-    "PictureUrl": "images/meals/hat-react2.png",
+    "PictureUrl": "images/meals/13-pizza-png-image.png",
     "MealTypeId": 2,
-    "MenuId": 1,
+    "MenuId": 3,
     "RestaurantId": 1
   },
   {
-    "Name": "Fiooid",
+    "Name": "Whopper",
     "Description": "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
     "Price": 18,
-    "PictureUrl": "images/meals/glove-code1.png",
+    "PictureUrl": "images/meals/77381-king-whopper-hamburger-big-veggie-burger.png",
     "MealTypeId": 4,
-    "MenuId": 3,
+    "MenuId": 1,
     "RestaurantId": 3
   },
   {
-    "Name": "Food2",
+    "Name": "Bk Wrap",
     "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
     "Price": 15,
-    "PictureUrl": "images/meals/glove-code2.png",
+    "PictureUrl": "images/meals/77553-king-whopper-sandwich-hamburger-burger-wrap-barbecue.png",
     "MealTypeId": 4,
-    "MenuId": 3,
+    "MenuId": 6,
     "RestaurantId": 3
   },
   {
-    "Name": "This Food",
+    "Name": "Caesar Pizza",
     "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa.",
     "Price": 16,
-    "PictureUrl": "images/meals/glove-code2.png",
+    "PictureUrl": "images/meals/2-pizza-png-image.png",
     "MealTypeId": 4,
-    "MenuId": 1,
+    "MenuId": 4,
     "RestaurantId": 1
   },
   {
-    "Name": "That Food",
+    "Name": "Whopper Wrap",
     "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
     "Price": 14,
-    "PictureUrl": "images/meals/glove-react2.png",
+    "PictureUrl": "images/meals/8-sandwich-png-image.png",
     "MealTypeId": 4,
-    "MenuId": 3,
+    "MenuId": 6,
     "RestaurantId": 3
   },
   {
-    "Name": "This food",
+    "Name": "Sundae",
     "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
     "Price": 250,
-    "PictureUrl": "images/meals/boot-redis1.png",
+    "PictureUrl": "images/meals/54237-7-ice-cream-sundae-free-clipart-hq.png",
     "MealTypeId": 3,
-    "MenuId": 2,
+    "MenuId": 5,
     "RestaurantId": 2
   },
   {
-    "Name": "Foodsdasd",
+    "Name": "Soft Serve Cone",
     "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
     "Price": 189.99,
-    "PictureUrl": "images/meals/boot-core2.png",
+    "PictureUrl": "images/meals/9-ice-cream-png-image.png",
     "MealTypeId": 3,
-    "MenuId": 2,
+    "MenuId": 5,
     "RestaurantId": 2
   },
   {
-    "Name": "Burger",
+    "Name": "Apple Pie",
     "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
     "Price": 199.99,
-    "PictureUrl": "images/meals/boot-core1.png",
+    "PictureUrl": "images/meals/42-meat-in-meal-png-image.png",
     "MealTypeId": 3,
-    "MenuId": 2,
+    "MenuId": 5,
     "RestaurantId": 2
   },
   {
-    "Name": "Cereal",
+    "Name": "Salad Pizza",
     "Description": "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
     "Price": 150,
-    "PictureUrl": "images/meals/boot-ang2.png",
+    "PictureUrl": "images/meals/22-pizza-png-image.png",
     "MealTypeId": 3,
-    "MenuId": 1,
+    "MenuId": 4,
     "RestaurantId": 1
   },
   {
-    "Name": "Crackers",
+    "Name": "Overkill Pizza",
     "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
     "Price": 180,
-    "PictureUrl": "images/meals/boot-ang1.png",
+    "PictureUrl": "images/meals/12-2-pizza-png-clipart.png",
     "MealTypeId": 3,
-    "MenuId": 1,
+    "MenuId": 3,
     "RestaurantId": 1
   }
 ]
