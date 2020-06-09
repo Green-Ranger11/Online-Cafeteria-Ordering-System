@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AccountService } from '../account/account.service';
 import { BasketService } from '../basket/basket.service';
 import { Observable } from 'rxjs';
 import { IBasketTotals } from '../shared/models/basket';
+import { CheckoutService } from './checkout.service';
+import { IOrder } from '../shared/models/order';
 
 @Component({
   selector: 'app-checkout',
@@ -13,19 +15,31 @@ import { IBasketTotals } from '../shared/models/basket';
 export class CheckoutComponent implements OnInit {
   checkoutForm: FormGroup;
   basketTotals$: Observable<IBasketTotals>;
-  choice: boolean;
+  choice = true;
+  @Input() total = 0;
 
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
-    private basketService: BasketService
+    private basketService: BasketService,
+    private checkoutService: CheckoutService
   ) {}
 
   ngOnInit(): void {
+    this.getOrder();
     this.createCheckOutForm();
     this.getAddressFormValues();
     this.getDeliveryMethodValue();
     this.basketTotals$ = this.basketService.basketTotals$;
+  }
+
+  async getOrder() {
+    this.checkoutService.getOrdersForUser().then((orders: IOrder[]) => {
+      this.total = orders.filter(o => o.paymentMethod === false).reduce((prev, current) => prev + current.total, 0);
+      console.log(this.total);
+    }, error => {
+      console.error(error);
+    });
   }
 
   paymentChoice(choice: boolean) {

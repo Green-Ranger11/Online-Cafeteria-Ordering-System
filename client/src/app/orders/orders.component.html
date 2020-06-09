@@ -7,7 +7,8 @@
             <th>Order</th>
             <th>Date</th>
             <th>Total</th>
-            <th>Status</th>
+            <th>Payment Method</th>
+            <th>Payment Status</th>
           </tr>
           </thead>
           <tbody>
@@ -15,6 +16,8 @@
             <th># {{order.id}}</th>
             <td>{{order.orderDate | date: 'medium'}}</td>
             <td>{{order.total | currency}}</td>
+            <td *ngIf="order.paymentMethod">Credit Card</td>
+            <td *ngIf="!order.paymentMethod">Payroll</td>
             <td>{{order.status}}</td>
           </tr>
           </tbody>

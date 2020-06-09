@@ -3,7 +3,8 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { IDeliveryMethod } from '../shared/models/deliveryMethod';
 import { map } from 'rxjs/operators';
-import { IOrderToCreate } from '../shared/models/order';
+import { IOrderToCreate, IOrder } from '../shared/models/order';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -23,5 +24,9 @@ export class CheckoutService {
         return dm.sort((a, b) => b.price - a.price);
       })
     );
+  }
+
+  getOrdersForUser() {
+    return this.http.get<IOrder[]>(this.baseUrl + 'orders').toPromise();
   }
 }

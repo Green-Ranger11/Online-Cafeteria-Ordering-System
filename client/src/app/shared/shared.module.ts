@@ -42,7 +42,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     NgxGalleryModule,
     TabsModule.forRoot(),
     ImageCropperModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
   ],
   exports: [
     PaginationModule,
@@ -62,7 +62,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     TabsModule,
     NgxDropzoneModule,
     ImageCropperModule,
-    PhotoWidgetComponent
+    PhotoWidgetComponent,
   ],
 })
 export class SharedModule {}

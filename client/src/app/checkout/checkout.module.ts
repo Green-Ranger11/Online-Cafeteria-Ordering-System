@@ -11,6 +11,8 @@ import { CheckoutPaymentComponent } from './checkout-payment/checkout-payment.co
 import { CheckoutSuccessComponent } from './checkout-success/checkout-success.component';
 import { PaymentOptionsComponent } from './payment-options/payment-options.component';
 import { CheckoutPaymentPayrollComponent } from './checkout-payment-payroll/checkout-payment-payroll.component';
+import { OrdersService } from '../orders/orders.service';
+import { OrdersModule } from '../orders/orders.module';
 
 @NgModule({
   declarations: [

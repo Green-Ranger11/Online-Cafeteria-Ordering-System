@@ -5,13 +5,13 @@
     "Price": 10
   },
   {
-    "ShortName": "Delivered to Offsitelocation 1",
-    "Description": "Delivered to Offsitelocation 1",
+    "ShortName": "Statham Campus",
+    "Description": "Delivered to Offsite location Statham Campus",
     "Price": 5
   },
   {
-    "ShortName": "Delivered to OffsiteLocation 2",
-    "Description": "Delivered to Offsitelocation 2",
+    "ShortName": "Lower Campus",
+    "Description": "Delivered to Offsite location Lower Campus",
     "Price": 5
   },
   {

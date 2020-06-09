@@ -56,7 +56,7 @@ namespace Infrastructure.Services
             if (existingOrder != null)
             {
                 _unitOfWork.Repository<Order>().Delete(existingOrder);
-                await _paymentService.CreateOrUpdatePaymentIntent(basket.PaymentIntentId);
+                if (paymentMethod) await _paymentService.CreateOrUpdatePaymentIntent(basket.PaymentIntentId);
             }
 
             // create order
