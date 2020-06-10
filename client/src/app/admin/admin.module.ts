@@ -6,11 +6,13 @@ import { SharedModule } from '../shared/shared.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { EditMealFormComponent } from './edit-meal-form/edit-meal-form.component';
 import { EditMealPhotosComponent } from './edit-meal-photos/edit-meal-photos.component';
+import { EditMenuComponent } from './edit-menu/edit-menu.component';
+import { EditMenuFormComponent } from './edit-menu-form/edit-menu-form.component';
 
 
 
 @NgModule({
-  declarations: [AdminComponent, EditMealComponent, EditMealComponent, EditMealFormComponent, EditMealPhotosComponent],
+  declarations: [AdminComponent, EditMealComponent, EditMealComponent, EditMealFormComponent, EditMealPhotosComponent, EditMenuComponent, EditMenuFormComponent],
   imports: [
     CommonModule,
     SharedModule,

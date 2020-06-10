@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { MealFormValues } from '../shared/models/meal';
+import { MenuFormValues } from '../shared/models/menu';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,18 @@ export class AdminService {
 
   deleteMeal(id: number) {
     return this.http.delete(this.baseUrl + 'meals/' + id);
+  }
+
+  createMenu(menu: MenuFormValues) {
+    return this.http.post(this.baseUrl + 'menus', menu);
+  }
+
+  updateMenu(menu: MenuFormValues, id: number) {
+    return this.http.put(this.baseUrl + 'menus/' + id, menu);
+  }
+
+  deleteMenu(id: number) {
+    return this.http.delete(this.baseUrl + 'menus/' + id);
   }
 
   uploadImage(file: File, id: number) {
