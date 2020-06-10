@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using API.Dtos;
 using API.Errors;
@@ -59,6 +60,7 @@ namespace API.Controllers
         public async Task<ActionResult> DeleteMenu(int id)
         {
             var menu = await _unitOfWork.Repository<Menu>().GetByIdAsync(id);
+            var spec = new MealsFromMenu(id);
 
             _unitOfWork.Repository<Menu>().Delete(menu);
 

@@ -6,8 +6,8 @@ import { AdminComponent } from './admin.component';
 
 const routes: Routes = [
   {path: '', component: AdminComponent},
-  {path: 'create', component: EditMealComponent, data: {breadcrumb: 'Create'}},
-  {path: 'edit/:id', component: EditMealComponent, data: {breadcrumb: 'Edit'}}
+  {path: 'create', component: EditMealComponent, data: {breadcrumb: 'Create Meal'}},
+  {path: 'edit/:id', component: EditMealComponent, data: {breadcrumb: 'Edit Meal'}}
 ];
 @NgModule({
   declarations: [],
