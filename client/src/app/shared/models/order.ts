@@ -5,6 +5,7 @@ export interface IOrderToCreate {
   deliveryMethodId: number;
   shipToAddress: IAddress;
   paymentMethod: boolean;
+  shippingDate: Date;
 }
 
 export interface IOrder {
@@ -15,6 +16,7 @@ export interface IOrder {
   deliveryMethod: string;
   shippingPrice: number;
   orderItems: IOrderItem[];
+  shippingDate: Date;
   subtotal: number;
   status: string;
   total: number;

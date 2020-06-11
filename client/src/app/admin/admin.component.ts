@@ -14,6 +14,7 @@ export class AdminComponent implements OnInit {
   meals: IMeal[];
   menus: IMenu[];
   totalCount: number;
+  menuCount: number;
   shopParams: ShopParams;
 
   constructor(private shopService: ShopService, private adminService: AdminService) {
@@ -38,6 +39,7 @@ export class AdminComponent implements OnInit {
     this.shopService.getMenus().subscribe(
       (response) => {
         this.menus = response;
+        this.menuCount = this.menus.length;
       },
       (error) => console.log(error)
     );

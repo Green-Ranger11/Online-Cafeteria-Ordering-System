@@ -1,1 +1,26 @@
-<p>edit-menu-form works!</p>
+<form #menuForm="ngForm" (ngSubmit)="onSubmit(menuForm.valid && menuForm.value)">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="name">Menu Name</label>
+        <input [ngClass]="{'is-invalid': name?.invalid && (name?.dirty || name?.touched)}" required type="text"
+          class="form-control" id="name" placeholder="Menu Name" name="name" #name="ngModel"
+          [(ngModel)]="menu.name">
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
+          <div *ngIf="name.errors.required">
+            Menu Name is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="restaurant">Restaurant</label>
+        <select id="restaurant" class="form-control" name="RestaurantId" [(ngModel)]="menu.RestaurantId"
+          required>
+          <option *ngFor="let restaurant of restaurants" [selected]="menu.RestaurantId === restaurant.id"
+            [ngValue]="restaurant.id">{{restaurant.name}}</option>
+        </select>
+      </div>
+    </div>
+    <button [disabled]="!menuForm.valid" type="submit" class="btn btn-primary my-3 float-right">Submit</button>
+  </form>

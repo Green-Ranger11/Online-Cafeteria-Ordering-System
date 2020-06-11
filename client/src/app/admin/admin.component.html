@@ -74,10 +74,10 @@
             <div class="col-lg-12">
               <div class="d-flex justify-content-between my-3">
                 <header class="h2">Menu List</header>
-                <button [routerLink]="['/admin/create']" class="btn btn-outline-success">Create new Menu</button>
+                <button [routerLink]="['/admin/createMenu']" class="btn btn-outline-success">Create new Menu</button>
               </div>
 
-              <app-paging-header [totalCount]="totalCount" [pageSize]="this.shopParams.pageSize"
+              <app-paging-header [totalCount]="menuCount" [pageSize]="this.shopParams.pageSize"
                 [pageNumber]="this.shopParams.pageNumber"></app-paging-header>
 
               <div class="table-responsive">
@@ -108,7 +108,7 @@
                         <h5>{{menu.name}}</h5>
                       </th>
                       <td class="align-middle">Number of Meals</td>
-                      <td class="align-middle"><button [routerLink]="['editMeal', menu.id]"
+                      <td class="align-middle"><button [routerLink]="['editMenu', menu.id]"
                           class="btn btn-warning">Edit</button></td>
                       <td class="align-middle"><button (click)="deleteMenu(menu.id)"
                           class="btn btn-danger">Delete</button></td>

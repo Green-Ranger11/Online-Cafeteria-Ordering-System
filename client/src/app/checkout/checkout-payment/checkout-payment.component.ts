@@ -37,6 +37,7 @@ export class CheckoutPaymentComponent implements AfterViewInit, OnDestroy {
   cardNumberValid = false;
   cardExpiryValid = false;
   cardCvcValid = false;
+  shippingDate: Date;
 
   constructor(
     private basketService: BasketService,
@@ -91,7 +92,7 @@ export class CheckoutPaymentComponent implements AfterViewInit, OnDestroy {
     this.loading = true;
     const basket = this.basketService.getCurrentBasketValue();
     try {
-      const createdOrder = await this.createOrder(basket);
+      const createdOrder = await this.createOrder(basket, this.shippingDate);
       const paymentResult = await this.confirmPaymentWithStripe(basket);
 
       if (paymentResult.paymentIntent) {
@@ -119,19 +120,20 @@ export class CheckoutPaymentComponent implements AfterViewInit, OnDestroy {
     });
   }
 
-  private createOrder(basket: IBasket) {
-    const orderToCreate = this.getOrderToCreate(basket);
+  private createOrder(basket: IBasket, shippingDate: Date) {
+    const orderToCreate = this.getOrderToCreate(basket, shippingDate);
     return this.checkoutService.createOrder(orderToCreate).toPromise();
   }
 
-  private getOrderToCreate(basket: IBasket) {
+  private getOrderToCreate(basket: IBasket, shippingDate: Date) {
     return {
       basketId: basket.id,
       deliveryMethodId: +this.checkoutForm
         .get('deliveryForm')
         .get('deliveryMethod').value,
       shipToAddress: this.checkoutForm.get('addressForm').value,
-      paymentMethod: true
+      paymentMethod: true,
+      shippingDate
     };
   }
 }

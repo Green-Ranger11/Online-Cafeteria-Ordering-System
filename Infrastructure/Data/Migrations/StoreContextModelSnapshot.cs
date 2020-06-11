@@ -37,6 +37,9 @@ namespace Infrastructure.Data.Migrations
                     b.Property<int>("MenuId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("MenuId1")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(100)")
@@ -53,6 +56,8 @@ namespace Infrastructure.Data.Migrations
                     b.HasIndex("MealTypeId");
 
                     b.HasIndex("MenuId");
+
+                    b.HasIndex("MenuId1");
 
                     b.HasIndex("RestaurantId");
 
@@ -144,6 +149,9 @@ namespace Infrastructure.Data.Migrations
                     b.Property<decimal>("Subtotal")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<DateTimeOffset>("shippingDate")
+                        .HasColumnType("datetimeoffset");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DeliveryMethodId");
@@ -228,6 +236,10 @@ namespace Infrastructure.Data.Migrations
                         .HasForeignKey("MenuId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("Core.Entities.Menu", null)
+                        .WithMany("OrderItems")
+                        .HasForeignKey("MenuId1");
 
                     b.HasOne("Core.Entities.Restaurant", "Restaurant")
                         .WithMany()

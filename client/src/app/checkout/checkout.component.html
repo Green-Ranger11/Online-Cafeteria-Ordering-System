@@ -11,12 +11,15 @@
                 <cdk-step [label]="'Review'">
                     <app-checkout-review [appSteppper]="appStepper"></app-checkout-review>
                 </cdk-step>
+                <cdk-step [label]="'Date Time'">
+                    <app-checkout-datetime [checkoutForm]="checkoutForm" (shippingDate)="getSelectedDate($event)"></app-checkout-datetime>
+                </cdk-step>
                 <cdk-step [label]="'Options'">
                     <app-payment-options (choice)="paymentChoice($event)"></app-payment-options>
                 </cdk-step>
                 <cdk-step [label]="'Payment'">
                     <app-checkout-payment *ngIf="choice" [checkoutForm]="checkoutForm"></app-checkout-payment>
-                    <app-checkout-payment-payroll *ngIf="!choice" [checkoutForm]="checkoutForm" [total]="total"></app-checkout-payment-payroll>
+                    <app-checkout-payment-payroll *ngIf="!choice" [checkoutForm]="checkoutForm" [total]="total" [selectedDate]="selectedDate"></app-checkout-payment-payroll>
                 </cdk-step>
             </app-stepper>
         </div>

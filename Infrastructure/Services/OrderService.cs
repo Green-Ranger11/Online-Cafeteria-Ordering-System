@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace Infrastructure.Services
             _basketRepo = basketRepo;
         }
 
-        public async Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethodId, string basketId, Address shippingAddress, bool paymentMethod)
+        public async Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethodId, string basketId, Address shippingAddress, bool paymentMethod, DateTimeOffset shippingDate)
         {
             // get basket
             var basket = await _basketRepo.GetBasketAsync(basketId);
@@ -50,17 +51,20 @@ namespace Infrastructure.Services
             var subtotal = items.Sum(item => item.Price * item.Quantity);
 
             // check to see if order exists
-            var spec = new OrderByPaymentIntentIdSpecification(basket.PaymentIntentId);
-            var existingOrder = await _unitOfWork.Repository<Order>().GetEnitityWithSpec(spec);
-
-            if (existingOrder != null)
+            if (paymentMethod)
             {
-                _unitOfWork.Repository<Order>().Delete(existingOrder);
-                if (paymentMethod) await _paymentService.CreateOrUpdatePaymentIntent(basket.PaymentIntentId);
-            }
+                var spec = new OrderByPaymentIntentIdSpecification(basket.PaymentIntentId);
+                var existingOrder = await _unitOfWork.Repository<Order>().GetEnitityWithSpec(spec);
 
+                if (existingOrder != null)
+                {
+                    _unitOfWork.Repository<Order>().Delete(existingOrder);
+                    await _paymentService.CreateOrUpdatePaymentIntent(basket.PaymentIntentId);
+                }
+            }
+            
             // create order
-            var order = new Order(items, buyerEmail, shippingAddress, deliveryMethod, subtotal, basket.PaymentIntentId, paymentMethod);
+            var order = new Order(items, buyerEmail, shippingAddress, deliveryMethod, subtotal, basket.PaymentIntentId, paymentMethod, shippingDate);
             _unitOfWork.Repository<Order>().Add(order);
 
             // save to db

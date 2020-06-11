@@ -1,1 +1,18 @@
-<p>edit-menu works!</p>
+<section class="meal-edit mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="tab-panel">
+            <tabset class="meal-tabset">
+              <tab heading="Edit Meal">
+                <div class="col-lg-8">
+                  <app-edit-menu-form [menu]="menuFormValues" [restaurants]="restaurants">
+                  </app-edit-menu-form>
+                </div>
+              </tab>
+            </tabset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

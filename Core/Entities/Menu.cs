@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Core.Entities
 {
     public class Menu : BaseEntity
@@ -7,5 +9,7 @@ namespace Core.Entities
         public Restaurant Restaurant { get; set; }
 
         public int RestaurantId { get; set; }
+        public IReadOnlyList<Meal> OrderItems { get; set; }
+
     }
 }

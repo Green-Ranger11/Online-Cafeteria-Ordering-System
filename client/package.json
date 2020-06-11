@@ -24,6 +24,7 @@
     "bootstrap": "^4.5.0",
     "bootswatch": "^4.5.0",
     "font-awesome": "^4.7.0",
+    "ng-pick-datetime": "^7.0.0",
     "ng2-currency-mask": "^9.0.2",
     "ngx-bootstrap": "^5.6.1",
     "ngx-dropzone": "^2.2.2",

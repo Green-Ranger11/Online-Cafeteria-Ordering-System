@@ -13,6 +13,7 @@ import { PaymentOptionsComponent } from './payment-options/payment-options.compo
 import { CheckoutPaymentPayrollComponent } from './checkout-payment-payroll/checkout-payment-payroll.component';
 import { OrdersService } from '../orders/orders.service';
 import { OrdersModule } from '../orders/orders.module';
+import { CheckoutDatetimeComponent } from './checkout-datetime/checkout-datetime.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { OrdersModule } from '../orders/orders.module';
     CheckoutSuccessComponent,
     PaymentOptionsComponent,
     CheckoutPaymentPayrollComponent,
+    CheckoutDatetimeComponent,
   ],
   imports: [
     CommonModule,

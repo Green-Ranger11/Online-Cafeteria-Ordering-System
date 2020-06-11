@@ -1,0 +1,22 @@
+<div class="container mt-5">
+    <div class="d-flex flex-column align-items-center mt-5">
+        <div class="col-6 my-5" style="display: inline-block;">
+            <h4>Select Date and Time for your Order</h4>
+            <div class="mt-5 form-group">
+                <input [min]="min" [max]="max" [owlDateTimeTrigger]="dt8" [owlDateTime]="dt8"
+                    placeholder="Date and Time for your Order" [max]="" class="form-control" style="margin-top: 100px;" [(ngModel)]="selectedDate">
+                <owl-date-time [startAt]="startAt" #dt8></owl-date-time>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="float-none d-flex justify-content-between flex-column flex-lg-row my-5">
+    <button class="btn btn-outline-primary" cdkStepperPrevious>
+        <i class="fa fa-angle-left"></i> Back to Review
+    </button>
+    <button (click)="test()" class="btn btn-primary" cdkStepperNext>
+        Go To Payment Options <i class="fa fa-angle-right"></i>
+    </button>
+</div>

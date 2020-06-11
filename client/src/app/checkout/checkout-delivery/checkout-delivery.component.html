@@ -1,4 +1,7 @@
-<div class="mt-4" [formGroup]="checkoutForm">
+<div class="d-flex flex-column align-items-center mt-4">
+    <h4> Select Delivery Method</h4>
+</div>
+<div class="mt-2" [formGroup]="checkoutForm">
     <div class="d-flex flex-column align-items-center" formGroupName="deliveryForm">
         <div class="col-6 my-3" *ngFor="let method of deliveryMethods" style="display: inline-block;">
             <input type="radio" (click)="setShippingPrice(method)" id={{method.id}} value="{{method.id}}"

@@ -64,6 +64,10 @@ export class ShopService {
     return this.http.get<IMeal>(this.baseUrl + 'meals/' + id);
   }
 
+  getMenu(id: number) {
+    return this.http.get<IMenu>(this.baseUrl + 'meals/menus/' + id);
+  }
+
   getRestaurants() {
     return this.http.get<IRestaurant[]>(this.baseUrl + 'meals/restaurants');
   }

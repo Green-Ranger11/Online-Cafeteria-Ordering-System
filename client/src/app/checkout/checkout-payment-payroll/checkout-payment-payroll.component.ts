@@ -17,6 +17,7 @@ export class CheckoutPaymentPayrollComponent implements OnInit {
   @Input() checkoutForm: FormGroup;
   loading = false;
   @Input() total;
+  @Input() selectedDate: Date;
 
   constructor(
     private basketService: BasketService,
@@ -25,14 +26,15 @@ export class CheckoutPaymentPayrollComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.selectedDate);
   }
 
   private createOrder(basket: IBasket) {
-    const orderToCreate = this.getOrderToCreate(basket);
+    const orderToCreate = this.getOrderToCreate(basket, this.selectedDate);
     return this.checkoutService.createOrder(orderToCreate).toPromise();
   }
 
-  private getOrderToCreate(basket: IBasket) {
+  private getOrderToCreate(basket: IBasket, shippingDate: Date) {
     return {
       basketId: basket.id,
       deliveryMethodId: +this.checkoutForm
@@ -40,6 +42,7 @@ export class CheckoutPaymentPayrollComponent implements OnInit {
         .get('deliveryMethod').value,
       shipToAddress: this.checkoutForm.get('addressForm').value,
       paymentMethod: false,
+      shippingDate
     };
   }
 
@@ -48,6 +51,7 @@ export class CheckoutPaymentPayrollComponent implements OnInit {
     const basket = this.basketService.getCurrentBasketValue();
     try {
       const createdOrder = await this.createOrder(basket);
+      console.log(createdOrder);
       this.basketService.deleteBasket(basket);
       const navigationExtras: NavigationExtras = { state: createdOrder };
       this.router.navigate(['checkout/success'], navigationExtras);

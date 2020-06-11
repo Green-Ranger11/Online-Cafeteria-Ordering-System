@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Data.Migrations
 {
-    public partial class PhotoEntityAdded : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -63,6 +63,7 @@ namespace Infrastructure.Data.Migrations
                     DeliveryMethodId = table.Column<int>(nullable: true),
                     Subtotal = table.Column<decimal>(nullable: false),
                     Status = table.Column<string>(nullable: false),
+                    PaymentMethod = table.Column<bool>(nullable: false),
                     PaymentIntentId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -130,7 +131,8 @@ namespace Infrastructure.Data.Migrations
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     MealTypeId = table.Column<int>(nullable: false),
                     MenuId = table.Column<int>(nullable: false),
-                    RestaurantId = table.Column<int>(nullable: false)
+                    RestaurantId = table.Column<int>(nullable: false),
+                    MenuId1 = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -145,6 +147,12 @@ namespace Infrastructure.Data.Migrations
                         column: x => x.MenuId,
                         principalTable: "Menus",
                         principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Meals_Menus_MenuId1",
+                        column: x => x.MenuId1,
+                        principalTable: "Menus",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Meals_Restaurants_RestaurantId",
                         column: x => x.RestaurantId,
@@ -183,6 +191,11 @@ namespace Infrastructure.Data.Migrations
                 name: "IX_Meals_MenuId",
                 table: "Meals",
                 column: "MenuId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Meals_MenuId1",
+                table: "Meals",
+                column: "MenuId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Meals_RestaurantId",

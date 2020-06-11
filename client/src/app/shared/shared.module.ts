@@ -16,8 +16,9 @@ import { RouterModule } from '@angular/router';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { PhotoWidgetComponent } from './components/photo-widget/photo-widget.component';
-import { ImageCropperModule} from 'ngx-image-cropper';
+import { ImageCropperModule } from 'ngx-image-cropper';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     TabsModule.forRoot(),
     ImageCropperModule,
     NgxDropzoneModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
   ],
   exports: [
     PaginationModule,
@@ -63,6 +66,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     NgxDropzoneModule,
     ImageCropperModule,
     PhotoWidgetComponent,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
   ],
 })
 export class SharedModule {}

@@ -17,6 +17,7 @@ export class CheckoutComponent implements OnInit {
   basketTotals$: Observable<IBasketTotals>;
   choice = true;
   @Input() total = 0;
+  selectedDate: Date;
 
   constructor(
     private fb: FormBuilder,
@@ -44,6 +45,10 @@ export class CheckoutComponent implements OnInit {
 
   paymentChoice(choice: boolean) {
     return this.choice = choice;
+  }
+
+  getSelectedDate(shippingDate: Date) {
+    return this.selectedDate = shippingDate;
   }
 
   createCheckOutForm() {

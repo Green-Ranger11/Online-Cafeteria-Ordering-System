@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20200607183703_AddPayMethodToOrder")]
-    partial class AddPayMethodToOrder
+    [Migration("20200610203702_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,6 +39,9 @@ namespace Infrastructure.Data.Migrations
                     b.Property<int>("MenuId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("MenuId1")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(100)")
@@ -55,6 +58,8 @@ namespace Infrastructure.Data.Migrations
                     b.HasIndex("MealTypeId");
 
                     b.HasIndex("MenuId");
+
+                    b.HasIndex("MenuId1");
 
                     b.HasIndex("RestaurantId");
 
@@ -230,6 +235,11 @@ namespace Infrastructure.Data.Migrations
                         .HasForeignKey("MenuId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("Core.Entities.Menu", null)
+                        .WithMany("OrderItems")
+                        .HasForeignKey("MenuId1")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Core.Entities.Restaurant", "Restaurant")
                         .WithMany()

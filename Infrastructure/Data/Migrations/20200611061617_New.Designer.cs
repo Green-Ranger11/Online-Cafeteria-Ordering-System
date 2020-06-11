@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20200606165545_PhotoEntityAdded")]
-    partial class PhotoEntityAdded
+    [Migration("20200611061617_New")]
+    partial class New
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,6 +39,9 @@ namespace Infrastructure.Data.Migrations
                     b.Property<int>("MenuId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("MenuId1")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(100)")
@@ -55,6 +58,8 @@ namespace Infrastructure.Data.Migrations
                     b.HasIndex("MealTypeId");
 
                     b.HasIndex("MenuId");
+
+                    b.HasIndex("MenuId1");
 
                     b.HasIndex("RestaurantId");
 
@@ -136,12 +141,18 @@ namespace Infrastructure.Data.Migrations
                     b.Property<string>("PaymentIntentId")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("PaymentMethod")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Subtotal")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTimeOffset>("shippingDate")
+                        .HasColumnType("datetimeoffset");
 
                     b.HasKey("Id");
 
@@ -227,6 +238,10 @@ namespace Infrastructure.Data.Migrations
                         .HasForeignKey("MenuId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("Core.Entities.Menu", null)
+                        .WithMany("OrderItems")
+                        .HasForeignKey("MenuId1");
 
                     b.HasOne("Core.Entities.Restaurant", "Restaurant")
                         .WithMany()

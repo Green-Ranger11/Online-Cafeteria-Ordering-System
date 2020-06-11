@@ -17,5 +17,6 @@ namespace API.Dtos
         public decimal Subtotal { get; set; }
         public string Status { get; set; }
         public decimal Total { get; set; }
+        public DateTimeOffset shippingDate { get; set; }
     }
 }
