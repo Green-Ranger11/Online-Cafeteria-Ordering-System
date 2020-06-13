@@ -1,0 +1,363 @@
+[
+    {
+      "Name": "Mozzarella Cheese",
+      "Price": 40,
+      "MealId": 1
+    },
+    {
+      "Name": "Plain Cheese",
+      "Price": 40,
+      "MealId": 1
+    },
+    {
+      "Name": "Tomato Sauce",
+      "Price": 40,
+      "MealId": 1
+    },
+    {
+      "Name": "Onions",
+      "Price": 40,
+      "MealId": 1
+    },
+    {
+      "Name": "Plain Cheese",
+      "Price": 40,
+      "MealId": 2
+    },
+    {
+      "Name": "Tomato Sauce",
+      "Price": 40,
+      "MealId": 2
+    },
+    {
+      "Name": "Onions",
+      "Price": 40,
+      "MealId": 2
+    },
+    {
+      "Name": "Chicken",
+      "Price": 30,
+      "MealId": 3
+    },
+    {
+      "Name": "Lettuce",
+      "Price": 30,
+      "MealId": 3
+    },
+    {
+      "Name": "Saunce",
+      "Price": 30,
+      "MealId": 3
+    },
+    {
+      "Name": "Onions",
+      "Price": 30,
+      "MealId": 3
+    },
+    {
+      "Name": "Buns",
+      "Price": 30,
+      "MealId": 3
+    },
+    {
+      "Name": "Buns",
+      "Price": 40,
+      "MealId": 4
+    },
+    {
+      "Name": "Patty",
+      "Price": 40,
+      "MealId": 4,
+      "Quantity": 2
+    },
+    {
+      "Name": "Lettuce",
+      "Price": 40,
+      "MealId": 4
+    },
+    {
+      "Name": "Sauce",
+      "Price": 40,
+      "MealId": 4
+    },
+    {
+      "Name": "Onions",
+      "Price": 40,
+      "MealId": 4
+    },
+    {
+      "Name": "Sesame seeds",
+      "Price": 40,
+      "MealId": 4
+    },
+    {
+      "Name": "Fish Patty",
+      "Price": 60,
+      "MealId": 5
+    },
+    {
+      "Name": "Buns",
+      "Price": 60,
+      "MealId": 5
+    },
+    {
+      "Name": "Cheese",
+      "Price": 60,
+      "MealId": 5
+    },
+    {
+      "Name": "Buns",
+      "Price": 25,
+      "MealId": 6
+    },
+    {
+      "Name": "Patty",
+      "Price": 25,
+      "MealId": 6
+    },
+    {
+      "Name": "Lettuce",
+      "Price": 20,
+      "MealId": 6
+    },
+    {
+      "Name": "Onions",
+      "Price": 20,
+      "MealId": 6
+    },
+    {
+      "Name": "Tomatos",
+      "Price": 20,
+      "MealId": 6
+    },
+    {
+      "Name": "Buns",
+      "Price": 3,
+      "MealId": 7
+    },
+    {
+      "Name": "Patty",
+      "Price": 3,
+      "MealId": 7
+    },
+    {
+      "Name": "Cheese",
+      "Price": 3,
+      "MealId": 7
+    },
+    {
+      "Name": "BBQ Chicken",
+      "Price": 1.5,
+      "MealId": 8
+    },
+    {
+      "Name": "Tomato Sauce",
+      "Price": 1.5,
+      "MealId": 8
+    },
+    {
+      "Name": "Cheese",
+      "Price": 1.5,
+      "MealId": 8
+    },
+    {
+      "Name": "Onions",
+      "Price": 1.5,
+      "MealId": 8
+    },
+    {
+      "Name": "Chicken",
+      "Price": 2,
+      "MealId": 9
+    },
+    {
+      "Name": "Beef",
+      "Price": 2,
+      "MealId": 9
+    },
+    {
+      "Name": "Bacon",
+      "Price": 2,
+      "MealId": 9
+    },
+    {
+      "Name": "Tomato Sauce",
+      "Price": 2,
+      "MealId": 9
+    },
+    {
+      "Name": "Cheese",
+      "Price": 2,
+      "MealId": 9
+    },
+    {
+      "Name": "Buns",
+      "Price": 4,
+      "MealId": 10
+    },
+    {
+      "Name": "Patty",
+      "Price": 4,
+      "MealId": 10
+    },
+    {
+      "Name": "Sauce",
+      "Price": 4,
+      "MealId": 10
+    },
+    {
+      "Name": "Onions",
+      "Price": 4,
+      "MealId": 10
+    },
+    {
+      "Name": "Tortilla",
+      "Price": 4,
+      "MealId": 11
+    },
+    {
+      "Name": "Sauce",
+      "Price": 4,
+      "MealId": 11
+    },
+    {
+      "Name": "Lettuce",
+      "Price": 4,
+      "MealId": 11
+    },
+    {
+      "Name": "Onions",
+      "Price": 4,
+      "MealId": 11
+    },
+    {
+      "Name": "Brocolli",
+      "Price": 3,
+      "MealId": 12
+    },
+    {
+      "Name": "Olives",
+      "Price": 3,
+      "MealId": 12
+    },
+    {
+      "Name": "Onions",
+      "Price": 1,
+      "MealId": 12
+    },
+    {
+      "Name": "Mushrooms",
+      "Price": 1,
+      "MealId": 12
+    },
+    {
+      "Name": "Cheese",
+      "Price": 3,
+      "MealId": 12
+    },
+    {
+      "Name": "Tortilla",
+      "Price": 3,
+      "MealId": 13
+    },
+    {
+      "Name": "Beef",
+      "Price": 3,
+      "MealId": 13
+    },
+    {
+      "Name": "Lettuce",
+      "Price": 3,
+      "MealId": 13
+    },
+    {
+      "Name": "Onions",
+      "Price": 3,
+      "MealId": 13
+    },
+    {
+      "Name": "Ice Cream",
+      "Price": 100,
+      "MealId": 14
+    },
+    {
+      "Name": "Choc Sauce",
+      "Price": 100,
+      "MealId": 14
+    },
+    {
+      "Name": "Cone",
+      "Price": 80,
+      "MealId": 15
+    },
+    {
+      "Name": "Ice Cream",
+      "Price": 80,
+      "MealId": 15
+    },
+    {
+      "Name": "Pie Sauce",
+      "Price": 80,
+      "MealId": 16
+    },
+    {
+      "Name": "Apple Chunks",
+      "Price": 80,
+      "MealId": 16
+    },
+    {
+      "Name": "Lettuce",
+      "Price": 25,
+      "MealId": 17
+    },
+    {
+      "Name": "Mushrooms",
+      "Price": 25,
+      "MealId": 17
+    },
+    {
+      "Name": "Olives",
+      "Price": 25,
+      "MealId": 17
+    },
+    {
+      "Name": "Onions",
+      "Price": 25,
+      "MealId": 17
+    },
+    {
+      "Name": "Cheese",
+      "Price": 25,
+      "MealId": 17
+    },
+    {
+      "Name": "Chicken",
+      "Price": 25,
+      "MealId": 18
+    },
+    {
+      "Name": "Beef",
+      "Price": 25,
+      "MealId": 18
+    },
+    {
+      "Name": "Ham",
+      "Price": 25,
+      "MealId": 18
+    },
+    {
+      "Name": "Bacon",
+      "Price": 25,
+      "MealId": 18
+    },
+    {
+      "Name": "Cheese",
+      "Price": 25,
+      "MealId": 18
+    },
+    {
+      "Name": "Onions",
+      "Price": 25,
+      "MealId": 18
+    }
+  ]

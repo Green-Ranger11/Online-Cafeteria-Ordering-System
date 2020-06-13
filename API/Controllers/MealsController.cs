@@ -206,6 +206,43 @@ namespace API.Controllers
             return Ok();
         }
 
+        [HttpPut("{id}/ingrediant")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult<MealToReturnDto>> AddMealIngrediant(int id, IngrediantToReturnDto ingrediantDto)
+        {
+            var spec = new MealsWithTypesAndMenusSpecification(id);
+            var meal = await _unitOfWork.Repository<Meal>().GetEnitityWithSpec(spec);
+
+            meal.AddIngrediant(ingrediantDto.Name, ingrediantDto.Price, ingrediantDto.Quantity);
+
+            _unitOfWork.Repository<Meal>().Update(meal);
+
+            var result = await _unitOfWork.Complete();
+
+            if (result <= 0) return BadRequest(new ApiResponse(400, "Problem adding ingrediant"));
+
+
+            return _mapper.Map<Meal, MealToReturnDto>(meal);
+        }
+
+        [HttpDelete("{id}/ingrediant/{ingrediantId}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult> DeleteMealIngrediant(int id, int ingrediantId)
+        {
+            var spec = new MealsWithTypesAndMenusSpecification(id);
+            var meal = await _unitOfWork.Repository<Meal>().GetEnitityWithSpec(spec);
+
+            meal.RemoveIngrediant(ingrediantId);
+
+            _unitOfWork.Repository<Meal>().Update(meal);
+
+            var result = await _unitOfWork.Complete();
+
+            if (result <= 0) return BadRequest(new ApiResponse(400, "Problem adding meal product"));
+
+            return Ok();
+        }
+
         [HttpPost("{id}/photo/{photoId}")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<MealToReturnDto>> SetMainPhoto(int id, int photoId)

@@ -21,5 +21,7 @@ namespace API.Dtos
 
         public IEnumerable<PhotoToReturnDto> Photos { get; set; }
 
+        public IEnumerable<IngrediantToReturnDto> Ingrediants { get; set; }
+
     }
 }

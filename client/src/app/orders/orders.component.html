@@ -10,7 +10,7 @@
             <th>Payment Method</th>
             <th>Payment Status</th>
             <th>Deliver/Pickup Date</th>
-            <th>Status</th>
+            <th>Delivery Status</th>
           </tr>
           </thead>
           <tbody>
@@ -21,7 +21,7 @@
             <td *ngIf="order.paymentMethod">Credit Card</td>
             <td *ngIf="!order.paymentMethod">Payroll</td>
             <td>{{order.status}}</td>
-            <td>{{order.shippingDate | date:'medium'}}</td>
+            <td>{{order.shippingDate | date:'short'}}</td>
             <td>To be Implemented</td>
           </tr>
           </tbody>

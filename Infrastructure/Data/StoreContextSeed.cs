@@ -83,6 +83,20 @@ namespace Infrastructure.Data
                     await context.SaveChangesAsync();
                 }
 
+                if(!context.Ingrediants.Any())
+                {
+                    var ingrediantsData = File.ReadAllText("../Infrastructure/Data/SeedData/ingrediants.json");
+
+                    var ingrediants = JsonSerializer.Deserialize<List<Ingrediant>>(ingrediantsData);
+
+                    foreach (var item in ingrediants)
+                    {
+                        context.Ingrediants.Add(item);
+                    }
+
+                    await context.SaveChangesAsync();
+                }
+
                 if (!context.DeliveryMethods.Any())
                 {
                     var dmData = File.ReadAllText("../Infrastructure/Data/SeedData/delivery.json");

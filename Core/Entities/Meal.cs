@@ -23,8 +23,28 @@ namespace Core.Entities
 
         public int RestaurantId { get; set; }
 
+        private readonly List<Ingrediant> _ingrediants = new List<Ingrediant>();
+        public IReadOnlyList<Ingrediant> Ingrediants => _ingrediants.AsReadOnly();
         private readonly List<Photo> _photos = new List<Photo>();
         public IReadOnlyList<Photo> Photos => _photos.AsReadOnly();
+
+        public void AddIngrediant(string name, decimal price, int quantity)
+        {
+            var ingrediant = new Ingrediant
+            {
+                Name = name,
+                Price = price,
+                Quantity = quantity
+            };
+
+            _ingrediants.Add(ingrediant);
+        }
+
+        public void RemoveIngrediant(int id)
+        {
+            var ingrediant = _ingrediants.Find(x => x.Id == id);
+            _ingrediants.Remove(ingrediant);
+        }
 
         public void AddPhoto(string pictureUrl, string fileName, bool isMain = false)
         {

@@ -15,8 +15,10 @@ namespace API.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        public MenusController(IUnitOfWork unitOfWork, IMapper mapper)
+        private readonly IPhotoService _photoService;
+        public MenusController(IUnitOfWork unitOfWork, IMapper mapper, IPhotoService photoService)
         {
+            _photoService = photoService;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
         }
@@ -61,6 +63,20 @@ namespace API.Controllers
         {
             var menu = await _unitOfWork.Repository<Menu>().GetByIdAsync(id);
             var spec = new MealsFromMenu(id);
+            var meals = await _unitOfWork.Repository<Meal>().GetEnititiesWithSpec(spec);
+
+            foreach (var meal in meals)
+            {
+                foreach (var photo in meal.Photos)
+                {
+                    if (meal.Id > 18)
+                    {
+                        _photoService.DeleteFromDisk(photo);
+                    }
+                }
+
+                _unitOfWork.Repository<Meal>().Delete(meal);
+            }
 
             _unitOfWork.Repository<Menu>().Delete(menu);
 

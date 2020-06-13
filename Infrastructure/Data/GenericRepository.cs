@@ -31,7 +31,7 @@ namespace Infrastructure.Data
             return await ApplySpecification(spec).FirstOrDefaultAsync();
         }
 
-        public async Task<IReadOnlyList<T>> GetEnititiesWithSpec(ISpecification<T> spec)
+        public async Task<List<T>> GetEnititiesWithSpec(ISpecification<T> spec)
         {
             return await ApplySpecification(spec).ToListAsync();
         }

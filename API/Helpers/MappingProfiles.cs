@@ -34,6 +34,7 @@ namespace API.Helpers
                     o => o.MapFrom<PhotoUrlResolver>());
             CreateMap<MenuCreateDto, Menu>();
             CreateMap<Menu, MenuToReturnDto>();
+            CreateMap<Ingrediant, IngrediantToReturnDto>();
         }
     }
 }
