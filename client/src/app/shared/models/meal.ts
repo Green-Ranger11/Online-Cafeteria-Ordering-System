@@ -8,6 +8,7 @@ export interface IMeal {
   menu: string;
   restaurant: string;
   photos: Photo[];
+  ingrediants: Ingrediant[];
 }
 
 export interface Photo {
@@ -16,6 +17,13 @@ export interface Photo {
   fileName: string;
   isMain: boolean;
 }
+
+export interface Ingrediant {
+  name: string;
+  price: number;
+  quantity: number;
+}
+
 
 export interface IMealToCreate {
   name: string;

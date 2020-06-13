@@ -6,6 +6,9 @@
         <div class="col-6">
             <h3>{{meal.name}}</h3>
             <p style="font-size: 2em;">{{meal.price | currency}}</p>
+            <ul>
+                <li *ngFor="let item of meal.ingrediants">{{item.name}}: {{item.price | currency}}</li>
+            </ul>
             <div class="d-flex justify-content-start align-items-center">
                 <i (click)="decrementQuantity()" class="fa fa-minus-circle text-warning mr-2" style="cursor: pointer; font-size: 2em;"></i>
                 <span class="font-weight-bold" style="font-size: 1.5em;">{{quantity}}</span>
