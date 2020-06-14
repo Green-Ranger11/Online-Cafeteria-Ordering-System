@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Core.Entities
 {
     public class BasketItem
@@ -10,5 +12,6 @@ namespace Core.Entities
         public string Restaurant { get; set; }
         public string Menu { get; set; }
         public string Type { get; set; }
+        public List<BasketItemIngrediant> Ingrediants { get; set; } = new List<BasketItemIngrediant>();
     }
 }

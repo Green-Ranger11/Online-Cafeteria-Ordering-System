@@ -6,7 +6,8 @@
         <div class="col-6">
             <h3>{{meal.name}}</h3>
             <p style="font-size: 2em;">{{meal.price | currency}}</p>
-            <ul>
+            <h5>Ingrediants</h5>
+            <ul class="list-unstyled">
                 <li *ngFor="let item of meal.ingrediants">{{item.name}}: {{item.price | currency}}</li>
             </ul>
             <div class="d-flex justify-content-start align-items-center">

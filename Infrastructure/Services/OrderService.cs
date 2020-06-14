@@ -39,7 +39,12 @@ namespace Infrastructure.Services
                 // Create Item Ordered
                 var itemOrdered = new MealItemOrdered(meal.Id, meal.Name, meal.Photos.FirstOrDefault(x => x.IsMain)?.PictureUrl);
                 // Create orderItem
-                var orderItem = new OrderItem(itemOrdered, meal.Price, item.Quantity);
+                var orderItem = new OrderItem(itemOrdered, meal.Price, item.Quantity, item.Ingrediants);
+                // Add extra ingrediant price to total order Price
+                foreach (var ingrediant in orderItem.Ingrediants)
+                {
+                    orderItem.Price += ingrediant.Price * ingrediant.Quantity;
+                }
                 // Add to list
                 items.Add(orderItem);
             }
@@ -50,7 +55,7 @@ namespace Infrastructure.Services
             // calc subtotal
             var subtotal = items.Sum(item => item.Price * item.Quantity);
 
-            // check to see if order exists
+            // check to see if order exists for orders done by credit card
             if (paymentMethod)
             {
                 var spec = new OrderByPaymentIntentIdSpecification(basket.PaymentIntentId);

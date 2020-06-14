@@ -46,6 +46,11 @@ namespace Infrastructure.Services
                 {
                     item.Price = mealItem.Price;
                 }
+                
+                foreach (var ingrediant in item.Ingrediants)
+                {
+                    item.Price += ingrediant.Quantity * ingrediant.Price;
+                }
             }
 
             var service = new PaymentIntentService();

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace API.Dtos
@@ -29,5 +30,7 @@ namespace API.Dtos
 
         [Required]
         public string Type { get; set; }
+
+        public List<BasketIngrediantDto> Ingrediants { get; set; }
     }
 }
