@@ -1,4 +1,3 @@
-
 <div class="container mt-5">
     <div class="row" *ngIf="order">
         <div class="col-8">
@@ -22,11 +21,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let item of order.orderItems">
+                            <tr *ngFor="let item of order.orderItems; let i = index">
                                 <th scope="row">
                                     <div class="p-2">
                                         <img src="{{item.pictureUrl}}" alt="{{item.mealName}}" class="img-fluid"
-                                            style="max-height: 50px">
+                                            style="max-height: 50px" [tooltip]="getIngrediantList(i)">
                                         <div class="ml-3 d-inline-block align-middle">
                                             <h5 class="mb-0">
                                                 {{item.mealName}}

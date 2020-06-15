@@ -14,8 +14,10 @@ namespace Infrastructure.Services
         private readonly IBasketRepository _basketRepo;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IPaymentService _paymentService;
-        public OrderService(IBasketRepository basketRepo, IUnitOfWork unitOfWork, IPaymentService paymentService)
+        private readonly IOrderRepository _orderRepo;
+        public OrderService(IBasketRepository basketRepo, IUnitOfWork unitOfWork, IPaymentService paymentService, IOrderRepository orderRepo)
         {
+            _orderRepo = orderRepo;
             _paymentService = paymentService;
             _unitOfWork = unitOfWork;
             _basketRepo = basketRepo;
@@ -45,11 +47,11 @@ namespace Infrastructure.Services
                     // If ingrediant Quantity is greater than default value then add to list
                     if (ingrediant.Quantity != meal.Ingrediants.FirstOrDefault(x => x.Id == ingrediant.Id).Quantity)
                     {
-                        // Get Price
-                        var price = meal.Ingrediants.FirstOrDefault(x => x.Id == ingrediant.Id).Price;
+                        // Get ingrediant from repo
+                        var repoIngrediant = meal.Ingrediants.FirstOrDefault(x => x.Id == ingrediant.Id);
                         // Get Quantity
                         var quantity = ingrediant.Quantity;
-                        var ingrediantToAdd = new OrderItemIngrediant(quantity, price);
+                        var ingrediantToAdd = new OrderItemIngrediant(quantity, repoIngrediant.Price, repoIngrediant.Name);
                         itemIngrediantsOrdered.Add(ingrediantToAdd);
                     }
                 }
@@ -116,14 +118,12 @@ namespace Infrastructure.Services
 
         public async Task<Order> GetOrderByIdAsync(int id, string buyerEmail)
         {
-            var spec = new OrdersWithItemsAndOrderingSpecification(id, buyerEmail);
-            return await _unitOfWork.Repository<Order>().GetEnitityWithSpec(spec);
+            return await _orderRepo.GetOrderAsync(id, buyerEmail);
         }
 
         public async Task<IReadOnlyList<Order>> GetOrdersForUserAsync(string buyerEmail)
         {
-            var spec = new OrdersWithItemsAndOrderingSpecification(buyerEmail);
-            return await _unitOfWork.Repository<Order>().ListAsync(spec);
+            return await _orderRepo.GetOrdersAsync(buyerEmail);
         }
     }
 }

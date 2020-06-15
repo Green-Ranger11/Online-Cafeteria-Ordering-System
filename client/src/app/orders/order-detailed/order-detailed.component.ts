@@ -36,4 +36,9 @@ export class OrderDetailedComponent implements OnInit {
         }
       );
   }
+
+  getIngrediantList(id: number) {
+    console.log(this.order.orderItems[id].ingrediants);
+    return this.order.orderItems[id].ingrediants.toString();
+  }
 }

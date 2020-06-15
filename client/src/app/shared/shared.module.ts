@@ -19,6 +19,7 @@ import { PhotoWidgetComponent } from './components/photo-widget/photo-widget.com
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
     NgxDropzoneModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
+    TooltipModule.forRoot()
   ],
   exports: [
     PaginationModule,
@@ -68,6 +70,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
     PhotoWidgetComponent,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
+    TooltipModule
   ],
 })
 export class SharedModule {}

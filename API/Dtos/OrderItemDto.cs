@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace API.Dtos
 {
     public class OrderItemDto
@@ -7,5 +9,6 @@ namespace API.Dtos
         public string PictureUrl { get; set; }
         public decimal Price { get; set; }
         public int Quantity { get; set; }
+         public IReadOnlyList<OrderItemIngrediantDto> Ingrediants { get; set; }
     }
 }

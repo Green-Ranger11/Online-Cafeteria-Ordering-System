@@ -19,6 +19,6 @@ namespace Core.Entities.OrderAggregate
         public MealItemOrdered ItemOrdered { get; set; }
         public decimal Price { get; set; }
         public int Quantity { get; set; }
-        public List<OrderItemIngrediant> Ingrediants { get; set; }
+        public IReadOnlyList<OrderItemIngrediant> Ingrediants { get; set; }
     }
 }

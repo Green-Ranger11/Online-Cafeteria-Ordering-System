@@ -22,7 +22,9 @@ export interface IBasketItem {
 
 export interface IBasketItemIngrediant {
   id: number;
+  name: string;
   quantity: number;
+  price: number;
 }
 
 export class Basket implements IBasket {

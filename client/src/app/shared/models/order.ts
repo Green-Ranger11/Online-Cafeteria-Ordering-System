@@ -30,4 +30,12 @@ export interface IOrderItem {
   pictureUrl: string;
   price: number;
   quantity: number;
+  ingrediants: Ingrediant[];
+}
+
+export interface Ingrediant {
+  id: number;
+  name: string;
+  price: number;
+  quantity: number;
 }
