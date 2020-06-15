@@ -8,7 +8,7 @@ namespace Core.Entities.OrderAggregate
         {
         }
 
-        public OrderItem(MealItemOrdered itemOrdered, decimal price, int quantity, List<BasketItemIngrediant> ingrediants)
+        public OrderItem(MealItemOrdered itemOrdered, decimal price, int quantity, List<OrderItemIngrediant> ingrediants)
         {
             ItemOrdered = itemOrdered;
             Price = price;
@@ -19,6 +19,6 @@ namespace Core.Entities.OrderAggregate
         public MealItemOrdered ItemOrdered { get; set; }
         public decimal Price { get; set; }
         public int Quantity { get; set; }
-        public List<BasketItemIngrediant> Ingrediants { get; set; }
+        public List<OrderItemIngrediant> Ingrediants { get; set; }
     }
 }

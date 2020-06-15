@@ -72,6 +72,18 @@ export class MealDetailsComponent implements OnInit {
     }
   }
 
+  incrementIngrediantQuantity(id: number) {
+    this.meal.ingrediants[id].quantity ++;
+    this.meal.price += this.meal.ingrediants[id].price;
+  }
+
+  decrementIngrediantQuantity(id: number) {
+    if (this.meal.ingrediants[id].quantity > 0) {
+      this.meal.ingrediants[id].quantity --;
+      this.meal.price -= this.meal.ingrediants[id].price;
+    }
+  }
+
   loadMeal() {
     this.shopService
       .getMeal(+this.activateRoute.snapshot.paramMap.get('id'))

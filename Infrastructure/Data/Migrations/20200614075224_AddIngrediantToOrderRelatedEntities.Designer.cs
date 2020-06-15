@@ -4,20 +4,45 @@ using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20200614075224_AddIngrediantToOrderRelatedEntities")]
+    partial class AddIngrediantToOrderRelatedEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Core.Entities.BasketItemIngrediant", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("OrderItemId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderItemId");
+
+                    b.ToTable("BasketItemIngrediant");
+                });
 
             modelBuilder.Entity("Core.Entities.Ingrediant", b =>
                 {
@@ -161,10 +186,6 @@ namespace Infrastructure.Data.Migrations
                     b.Property<int?>("DeliveryMethodId")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeliveryStatus")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTimeOffset>("OrderDate")
                         .HasColumnType("datetimeoffset");
 
@@ -214,29 +235,6 @@ namespace Infrastructure.Data.Migrations
                     b.ToTable("OrderItems");
                 });
 
-            modelBuilder.Entity("Core.Entities.OrderAggregate.OrderItemIngrediant", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("OrderItemId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderItemId");
-
-                    b.ToTable("OrderItemIngrediant");
-                });
-
             modelBuilder.Entity("Core.Entities.Photo", b =>
                 {
                     b.Property<int>("Id")
@@ -276,6 +274,13 @@ namespace Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Restaurants");
+                });
+
+            modelBuilder.Entity("Core.Entities.BasketItemIngrediant", b =>
+                {
+                    b.HasOne("Core.Entities.OrderAggregate.OrderItem", null)
+                        .WithMany("Ingrediants")
+                        .HasForeignKey("OrderItemId");
                 });
 
             modelBuilder.Entity("Core.Entities.Ingrediant", b =>
@@ -385,13 +390,6 @@ namespace Infrastructure.Data.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("OrderItemId");
                         });
-                });
-
-            modelBuilder.Entity("Core.Entities.OrderAggregate.OrderItemIngrediant", b =>
-                {
-                    b.HasOne("Core.Entities.OrderAggregate.OrderItem", null)
-                        .WithMany("Ingrediants")
-                        .HasForeignKey("OrderItemId");
                 });
 
             modelBuilder.Entity("Core.Entities.Photo", b =>

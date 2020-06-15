@@ -9,14 +9,16 @@ import { EditMealPhotosComponent } from './edit-meal-photos/edit-meal-photos.com
 import { EditMenuComponent } from './edit-menu/edit-menu.component';
 import { EditMenuFormComponent } from './edit-menu-form/edit-menu-form.component';
 
-
-
 @NgModule({
-  declarations: [AdminComponent, EditMealComponent, EditMealComponent, EditMealFormComponent, EditMealPhotosComponent, EditMenuComponent, EditMenuFormComponent],
-  imports: [
-    CommonModule,
-    SharedModule,
-    AdminRoutingModule
-  ]
+  declarations: [
+    AdminComponent,
+    EditMealComponent,
+    EditMealComponent,
+    EditMealFormComponent,
+    EditMealPhotosComponent,
+    EditMenuComponent,
+    EditMenuFormComponent,
+  ],
+  imports: [CommonModule, SharedModule, AdminRoutingModule],
 })
-export class AdminModule { }
+export class AdminModule {}

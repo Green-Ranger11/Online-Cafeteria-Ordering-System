@@ -159,6 +159,7 @@ export class BasketService {
       restaurant: item.restaurant,
       menu: item.menu,
       type: item.mealType,
+      ingrediants: item.ingrediants
     };
   }
 }

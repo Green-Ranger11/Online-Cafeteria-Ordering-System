@@ -22,7 +22,7 @@
             <td *ngIf="!order.paymentMethod">Payroll</td>
             <td>{{order.status}}</td>
             <td>{{order.shippingDate | date:'short'}}</td>
-            <td>To be Implemented</td>
+            <td>{{order.deliveryStatus}}</td>
           </tr>
           </tbody>
         </table>

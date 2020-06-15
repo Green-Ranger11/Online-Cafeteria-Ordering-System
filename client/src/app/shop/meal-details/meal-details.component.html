@@ -1,19 +1,35 @@
 <div class="container mt-5">
     <div class="row" *ngIf="meal">
         <div class="col-6">
-            <ngx-gallery [options]="galleryOptions" [images]="galleryImages" style="display: inline-block; margin-bottom: 20px"></ngx-gallery>
+            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"
+                style="display: inline-block; margin-bottom: 20px"></ngx-gallery>
         </div>
         <div class="col-6">
             <h3>{{meal.name}}</h3>
             <p style="font-size: 2em;">{{meal.price | currency}}</p>
             <h5>Ingrediants</h5>
             <ul class="list-unstyled">
-                <li *ngFor="let item of meal.ingrediants">{{item.name}}: {{item.price | currency}}</li>
+                <li *ngFor="let item of meal.ingrediants; let i=index">
+                    <div class="d-flex justify-content-between col-6">
+                        <div class="d-flex justify-content-between row">
+                            {{item.name}}: {{item.price | currency}}
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-start col-3">
+                        <i (click)="decrementIngrediantQuantity(i)" class="fa fa-angle-left text-warning mr-2"
+                            style="cursor: pointer; font-size: 2em;"></i>
+                        <span class="font-weight-bold" style="font-size: 1.5em;">{{item.quantity}}</span>
+                        <i (click)="incrementIngrediantQuantity(i)" class="fa fa-angle-right text-warning mx-2"
+                            style="cursor: pointer; font-size: 2em;"></i>
+                    </div>
+                </li>
             </ul>
             <div class="d-flex justify-content-start align-items-center">
-                <i (click)="decrementQuantity()" class="fa fa-minus-circle text-warning mr-2" style="cursor: pointer; font-size: 2em;"></i>
+                <i (click)="decrementQuantity()" class="fa fa-minus-circle text-warning mr-2"
+                    style="cursor: pointer; font-size: 2em;"></i>
                 <span class="font-weight-bold" style="font-size: 1.5em;">{{quantity}}</span>
-                <i (click)="incrementQuantity()" class="fa fa-plus-circle text-warning mx-2" style="cursor: pointer; font-size: 2em;"></i>
+                <i (click)="incrementQuantity()" class="fa fa-plus-circle text-warning mx-2"
+                    style="cursor: pointer; font-size: 2em;"></i>
                 <button (click)="addItemToBasket()" class="btn btn-outline-primary btn-lg ml-4">Add to Order</button>
             </div>
         </div>

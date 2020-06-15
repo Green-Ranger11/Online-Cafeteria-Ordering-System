@@ -17,6 +17,12 @@ export interface IBasketItem {
   restaurant: string;
   menu: string;
   type: string;
+  ingrediants: IBasketItemIngrediant[];
+}
+
+export interface IBasketItemIngrediant {
+  id: number;
+  quantity: number;
 }
 
 export class Basket implements IBasket {

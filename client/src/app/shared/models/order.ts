@@ -21,6 +21,7 @@ export interface IOrder {
   status: string;
   total: number;
   paymentMethod: boolean;
+  deliveryStatus: string;
 }
 
 export interface IOrderItem {

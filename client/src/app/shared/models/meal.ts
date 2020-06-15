@@ -19,6 +19,7 @@ export interface Photo {
 }
 
 export interface Ingrediant {
+  id: number;
   name: string;
   price: number;
   quantity: number;

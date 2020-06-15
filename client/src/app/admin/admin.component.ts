@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { IMeal } from '../shared/models/meal';
 import { ShopParams } from '../shared/models/shopParams';
 import { ShopService } from '../shop/shop.service';
@@ -11,14 +11,17 @@ import { IMenu } from '../shared/models/menu';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+  @ViewChild('search', { static: false }) searchTerm: ElementRef;
   meals: IMeal[];
   menus: IMenu[];
   totalCount: number;
   menuCount: number;
-  shopParams: ShopParams;
+  mealShopParams: ShopParams;
+  menuShopParams: ShopParams;
 
   constructor(private shopService: ShopService, private adminService: AdminService) {
-    this.shopParams = this.shopService.getShopParams();
+    this.mealShopParams = this.shopService.getShopParams();
+    this.menuShopParams = this.shopService.getShopParams();
    }
 
   ngOnInit(): void {
@@ -27,7 +30,7 @@ export class AdminComponent implements OnInit {
   }
 
   getMeals() {
-    this.shopService.getMeals(this.shopParams).subscribe(response => {
+    this.shopService.getMeals(this.mealShopParams).subscribe(response => {
       this.meals = response.data;
       this.totalCount = response.count;
     }, error => {
@@ -66,6 +69,18 @@ export class AdminComponent implements OnInit {
       this.menus.splice(this.menus.findIndex(p => p.id === id), 1);
       this.totalCount--;
     });
+  }
+
+  onSearch() {
+    this.mealShopParams.search = this.searchTerm.nativeElement.value;
+    this.mealShopParams.pageNumber = 1;
+    this.getMeals();
+  }
+
+  onReset() {
+    this.searchTerm.nativeElement.value = '';
+    this.mealShopParams = new ShopParams();
+    this.getMeals();
   }
 
 }

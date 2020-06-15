@@ -7,6 +7,9 @@ namespace Core.Entities.OrderAggregate
         [EnumMember(Value = "Pending")]
         Pending,
 
+        [EnumMember(Value = "Payroll Pending")]
+        PayRollPending,
+
         [EnumMember(Value = "Payment Recieved")]
         PaymentRecieved,
 

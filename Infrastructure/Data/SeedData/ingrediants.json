@@ -67,8 +67,7 @@
     {
       "Name": "Patty",
       "Price": 40,
-      "MealId": 14,
-      "Quantity": 2
+      "MealId": 14
     },
     {
       "Name": "Lettuce",

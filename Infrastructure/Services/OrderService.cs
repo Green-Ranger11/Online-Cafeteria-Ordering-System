@@ -38,12 +38,32 @@ namespace Infrastructure.Services
                 var meal = await _unitOfWork.Repository<Meal>().GetEnitityWithSpec(mealspec);
                 // Create Item Ordered
                 var itemOrdered = new MealItemOrdered(meal.Id, meal.Name, meal.Photos.FirstOrDefault(x => x.IsMain)?.PictureUrl);
+                // Add Ingrediants and Quantity
+                var itemIngrediantsOrdered = new List<OrderItemIngrediant>();
+                foreach (var ingrediant in item.Ingrediants)
+                {
+                    // If ingrediant Quantity is greater than default value then add to list
+                    if (ingrediant.Quantity != meal.Ingrediants.FirstOrDefault(x => x.Id == ingrediant.Id).Quantity)
+                    {
+                        // Get Price
+                        var price = meal.Ingrediants.FirstOrDefault(x => x.Id == ingrediant.Id).Price;
+                        // Get Quantity
+                        var quantity = ingrediant.Quantity;
+                        var ingrediantToAdd = new OrderItemIngrediant(quantity, price);
+                        itemIngrediantsOrdered.Add(ingrediantToAdd);
+                    }
+                }
                 // Create orderItem
-                var orderItem = new OrderItem(itemOrdered, meal.Price, item.Quantity, item.Ingrediants);
+                var orderItem = new OrderItem(itemOrdered, meal.Price, item.Quantity, itemIngrediantsOrdered);
                 // Add extra ingrediant price to total order Price
                 foreach (var ingrediant in orderItem.Ingrediants)
                 {
-                    orderItem.Price += ingrediant.Price * ingrediant.Quantity;
+                    if (ingrediant.Quantity > 1)
+                    {
+                        orderItem.Price += ingrediant.Price * (ingrediant.Quantity);
+                    }
+                    else
+                        orderItem.Price -= ingrediant.Price;
                 }
                 // Add to list
                 items.Add(orderItem);
@@ -67,9 +87,17 @@ namespace Infrastructure.Services
                     await _paymentService.CreateOrUpdatePaymentIntent(basket.PaymentIntentId);
                 }
             }
-            
+
+
             // create order
             var order = new Order(items, buyerEmail, shippingAddress, deliveryMethod, subtotal, basket.PaymentIntentId, paymentMethod, shippingDate);
+
+            // edit status for payroll
+            if (!paymentMethod)
+            {
+                order.Status = OrderStatus.PayRollPending;
+            }
+
             _unitOfWork.Repository<Order>().Add(order);
 
             // save to db

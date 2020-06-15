@@ -38,6 +38,7 @@ namespace Core.Entities.OrderAggregate
         public decimal Subtotal { get; set; }
         public OrderStatus Status { get; set; } = OrderStatus.Pending;
         // If True pay by credit card if False pay by Payroll
+        public OrderDeliveryStatus DeliveryStatus { get; set; } = OrderDeliveryStatus.OrderRecieved;
         public bool PaymentMethod { get; set; } = true;
         public string PaymentIntentId { get; set; }
 
