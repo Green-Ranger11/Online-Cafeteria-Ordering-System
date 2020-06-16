@@ -10,8 +10,26 @@
                 </app-edit-meal-form>
               </div>
             </tab>
-            <tab heading="Edit Photos"> 
+            <tab heading="Edit Photos">
               <app-edit-meal-photos [meal]="meal"></app-edit-meal-photos>
+            </tab>
+            <tab heading="Edit Ingredients">
+              <div class="d-flex justify-content-start">
+                <table>
+                  <thead>
+                    <tr>
+                      <td>Name</td>
+                      <td>Price</td>
+                      <td>Quantity</td>
+                    </tr>
+                  </thead>
+                  <tr *ngFor="let ingrediant of thisMeal.ingrediants">
+                    <td>{{ ingrediant.name }}</td>
+                    <td>{{ ingrediant.price | currency}}</td>
+                    <td>{{ ingrediant.quantity }}</td>
+                  </tr>
+                </table>
+              </div>
             </tab>
           </tabset>
         </div>

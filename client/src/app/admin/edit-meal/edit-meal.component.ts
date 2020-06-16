@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MealFormValues } from 'src/app/shared/models/meal';
+import { MealFormValues, Ingrediant, IMeal } from 'src/app/shared/models/meal';
 import { IRestaurant } from 'src/app/shared/models/restaurants';
 import { IMenu } from 'src/app/shared/models/menu';
 import { IType } from 'src/app/shared/models/mealType';
@@ -19,12 +19,13 @@ export class EditMealComponent implements OnInit {
   restaurants: IRestaurant[];
   menus: IMenu[];
   types: IType[];
+  thisMeal: IMeal;
 
   constructor(
     private adminService: AdminService,
     private shopService: ShopService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
   ) {
     this.meal = new MealFormValues();
   }
@@ -46,6 +47,7 @@ export class EditMealComponent implements OnInit {
       () => {
         if (this.route.snapshot.url[0].path === 'edit') {
           this.loadMeal();
+          this.loadFullMeal();
         }
       }
     );
@@ -77,5 +79,18 @@ export class EditMealComponent implements OnInit {
 
   getMenus() {
     return this.shopService.getMenus();
+  }
+
+  loadFullMeal() {
+    this.shopService
+      .getMeal(+this.route.snapshot.paramMap.get('id'))
+      .subscribe(
+        (meal) => {
+          this.thisMeal = meal;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 }
