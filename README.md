@@ -6,14 +6,13 @@ This is a online food ordering system where you can order your meals online. Thi
 
 ### Prerequisites
 
-.NET Core Sdk v3.0 or greater
-POSTMAN - For testing suites for the API
-SQL Server 2016 or greater
-Node.js
-Angular CLI
-Stripe CLI
-Redis 64Bit - Probably want to use Chocolatey to install otherwise its a headache
-
+.NET Core Sdk v3.0 or greater 
+POSTMAN - For testing suites for the API 
+SQL Server 2016 or greater 
+Node.js 
+Angular CLI 
+Stripe CLI 
+Redis 64Bit - Probably want to use Chocolatey to install otherwise its a headache 
 
 ### Installing
 
