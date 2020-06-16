@@ -8,7 +8,7 @@ This is a online food ordering system where you can order your meals online. Thi
 
 * .NET Core Sdk v3.0 or greater <br />
 * POSTMAN - For testing suites for the API  <br />
-* SQL Server 2016 or greater <br />
+* SQL Server 2016 or greater Note: This application was initially built on SQLite and configurations have already been made to take care of SQLite's drawbacks should you choose to use SQLite as your database <br />
 * Node.js <br />
 * Angular CLI <br />
 * Stripe CLI <br />
@@ -16,15 +16,11 @@ This is a online food ordering system where you can order your meals online. Thi
 * Code Editor or IDE like VS Code, VS Studio or Rider <br />
 
 ### Installing
-```
-1. Install .NET Core Sdk from [Microsoft](https://dotnet.microsoft.com/download)
-```
-2. If you're using Visual Studio you may already have 
-```
 
-```
+1. Install .NET Core Sdk and Runtime from [Microsoft](https://dotnet.microsoft.com/download)
+2. If you're using Visual Studio 2017 or greater you may already have SQL Server if not go into Visual Studio Installer and tick SQL Server. Otherwise
+head [here](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) and get the developer version, its free.
 
-```
 
 End with an example of getting some data out of the system or using it for a little demo
 
