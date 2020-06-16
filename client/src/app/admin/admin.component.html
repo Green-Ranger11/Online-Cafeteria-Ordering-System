@@ -11,7 +11,6 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="d-flex justify-content-between my-3">
-                <header class="h2">Meal List</header>
                 <div class="form-inline" *ngIf="meals">
                   <input type="text" class="form-control mr-2" #search style="width:300px" placeholder="Search"
                     type="text">
@@ -88,11 +87,9 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
-              <div class="d-flex justify-content-between my-3">
-                <header class="h2">Menu List</header>
+              <div class="d-flex justify-content-end my-3">
                 <button [routerLink]="['/admin/createMenu']" class="btn btn-outline-success">Create new Menu</button>
               </div>
-
               <app-paging-header [totalCount]="menuCount" [pageSize]="this.menuShopParams.pageSize"
                 [pageNumber]="this.menuShopParams.pageNumber"></app-paging-header>
 
