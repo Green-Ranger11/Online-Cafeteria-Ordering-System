@@ -65,4 +65,8 @@ label.xng-breadcrumb-trail {
   width: 100%;
 }
 
+.tooltip-arrow {
+  visibility: hidden;
+}
+
 @import "~ng-pick-datetime/assets/style/picker.min.css";

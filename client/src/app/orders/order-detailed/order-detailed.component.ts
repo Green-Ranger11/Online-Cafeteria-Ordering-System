@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IOrder } from 'src/app/shared/models/order';
+import { IOrder, Ingrediant } from 'src/app/shared/models/order';
 import { ActivatedRoute } from '@angular/router';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { OrdersService } from '../orders.service';
@@ -11,6 +11,7 @@ import { OrdersService } from '../orders.service';
 })
 export class OrderDetailedComponent implements OnInit {
   order: IOrder;
+  ingrediant: Ingrediant[];
 
   constructor(
     private route: ActivatedRoute,
@@ -35,10 +36,5 @@ export class OrderDetailedComponent implements OnInit {
           console.log(error);
         }
       );
-  }
-
-  getIngrediantList(id: number) {
-    console.log(this.order.orderItems[id].ingrediants);
-    return this.order.orderItems[id].ingrediants.toString();
   }
 }

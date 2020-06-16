@@ -23,7 +23,22 @@
             <tbody>
                 <tr *ngFor="let item of (basket$ | async).items">
                     <th scope="row">
-                        <div class="p-2">
+                        <div class="p-2 customToolTip" [tooltip]="ingrediantList" containerClass="customClass">
+                            <ng-template #ingrediantList>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <td>Ingrediants and Quantity</td>
+                                        </tr>
+                                    </thead>
+                                    <div *ngFor="let ingrediant of item.ingrediants">
+                                        <tr *ngIf="ingrediant.quantity > 1">
+                                                <td>{{ ingrediant.name }} : {{ ingrediant.price | currency}}</td>
+                                                <td>{{ ingrediant.quantity }} units</td>
+                                        </tr>
+                                    </div>
+                                </table>
+                            </ng-template>
                             <img src="{{item.pictureUrl}}" alt="{{item.mealName}}" class="img-fluid"
                                 style="max-height: 50px;">
                             <div class="ml-3 d-inline-block align-middle">
