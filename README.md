@@ -13,21 +13,17 @@ This is a online food ordering system where you can order your meals online. Thi
 * Angular CLI <br />
 * Stripe CLI <br />
 * Redis 64Bit - Probably want to use Chocolatey to install otherwise its a headache <br />
+* Code Editor or IDE like VS Code, VS Studio or Rider <br />
 
 ### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
 ```
-Give the example
+1. Install .NET Core Sdk from [Microsoft](https://dotnet.microsoft.com/download)
+```
+2. If you're using Visual Studio you may already have 
 ```
 
-And repeat
-
 ```
-until finished
+
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
