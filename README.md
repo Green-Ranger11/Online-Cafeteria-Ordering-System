@@ -57,7 +57,7 @@ Finally, open another terminal navigate to the client Project folder and run the
 ng-serve
 ```
 This should open a new tab in your default browser with this view:
-![Image of Home Page](https://imgur.com/rwGqqU4)
+![Image of Home Page](/API/wwwroot/images/HomePage.png)
 
 ## Running the tests
 
