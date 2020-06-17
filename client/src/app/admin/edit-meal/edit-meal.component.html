@@ -14,32 +14,7 @@
               <app-edit-meal-photos [meal]="meal"></app-edit-meal-photos>
             </tab>
             <tab heading="Edit Ingredients">
-              <div class="d-flex justify-content-start">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Name</th>
-                      <th scope="col">Price</th>
-                      <th scope="col">Quantity</th>
-                      <th scope="col">Edit</th>
-                      <th scope="col">Delete</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let ingrediant of thisMeal.ingrediants">
-                      <td class="align-middle">{{ ingrediant.name }}</td>
-                      <td class="align-middle">{{ ingrediant.price | currency}}</td>
-                      <td class="align-middle">{{ ingrediant.quantity }}</td>
-                      <td class="align-middle">
-                        <button class="btn btn-warning">Edit</button>
-                      </td>
-                      <td class="align-middle">
-                        <button class="btn btn-danger">Delete</button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <app-edit-ingrediants [thisMeal]="thisMeal"></app-edit-ingrediants>
             </tab>
           </tabset>
         </div>

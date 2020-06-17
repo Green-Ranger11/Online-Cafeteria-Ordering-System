@@ -8,6 +8,7 @@ import { EditMealFormComponent } from './edit-meal-form/edit-meal-form.component
 import { EditMealPhotosComponent } from './edit-meal-photos/edit-meal-photos.component';
 import { EditMenuComponent } from './edit-menu/edit-menu.component';
 import { EditMenuFormComponent } from './edit-menu-form/edit-menu-form.component';
+import { EditIngrediantsComponent } from './edit-ingrediants/edit-ingrediants.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { EditMenuFormComponent } from './edit-menu-form/edit-menu-form.component
     EditMealPhotosComponent,
     EditMenuComponent,
     EditMenuFormComponent,
+    EditIngrediantsComponent,
   ],
   imports: [CommonModule, SharedModule, AdminRoutingModule],
 })

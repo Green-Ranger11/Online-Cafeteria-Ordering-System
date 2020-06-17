@@ -25,6 +25,21 @@ export interface Ingrediant {
   quantity: number;
 }
 
+export interface IngrediantToCreate {
+  name: string;
+  price: number;
+  quantity: number;
+}
+
+export class IngrediantsFormValues implements IngrediantToCreate {
+  name = '';
+  price = 0;
+  quantity = 1;
+
+  constructor(init?: IngrediantsFormValues) {
+    Object.assign(this, init);
+  }
+}
 
 export interface IMealToCreate {
   name: string;

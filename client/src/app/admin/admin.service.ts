@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { MealFormValues } from '../shared/models/meal';
+import { MealFormValues, Ingrediant, IngrediantsFormValues } from '../shared/models/meal';
 import { MenuFormValues } from '../shared/models/menu';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AdminService {
   baseUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   createMeal(meal: MealFormValues) {
     return this.http.post(this.baseUrl + 'meals', meal);
@@ -41,15 +41,44 @@ export class AdminService {
     formData.append('photo', file, 'image.png');
     return this.http.put(this.baseUrl + 'meals/' + id + '/photo', formData, {
       reportProgress: true,
-      observe: 'events'
+      observe: 'events',
     });
   }
 
   deleteMealPhoto(photoId: number, mealId: number) {
-    return this.http.delete(this.baseUrl + 'meals/' + mealId + '/photo/' + photoId);
+    return this.http.delete(
+      this.baseUrl + 'meals/' + mealId + '/photo/' + photoId
+    );
   }
 
   setMainPhoto(photoId: number, mealId: number) {
-    return this.http.post(this.baseUrl + 'meals/' + mealId + '/photo/' + photoId, {});
+    return this.http.post(
+      this.baseUrl + 'meals/' + mealId + '/photo/' + photoId,
+      {}
+    );
+  }
+
+  addMealIngrediant(ingrediant: IngrediantsFormValues, mealId: number) {
+    return this.http.post(
+      this.baseUrl + 'meals/' + mealId + '/ingrediant/',
+      ingrediant
+    );
+  }
+
+  updateMealIngrediant(
+    ingrediant: Ingrediant,
+    mealId: number,
+    ingrediantId: number
+  ) {
+    return this.http.put(
+      this.baseUrl + 'meals/' + mealId + '/ingrediant/' + ingrediantId,
+      ingrediant
+    );
+  }
+
+  deleteMealIngrediant(ingrediantId: number, mealId: number) {
+    return this.http.delete(
+      this.baseUrl + 'meals/' + mealId + '/ingrediant/' + ingrediantId
+    );
   }
 }

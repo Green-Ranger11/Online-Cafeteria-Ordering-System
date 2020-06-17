@@ -206,7 +206,7 @@ namespace API.Controllers
             return Ok();
         }
 
-        [HttpPut("{id}/ingrediant")]
+        [HttpPost("{id}/ingrediant")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<MealToReturnDto>> AddMealIngrediant(int id, IngrediantToReturnDto ingrediantDto)
         {
@@ -220,6 +220,25 @@ namespace API.Controllers
             var result = await _unitOfWork.Complete();
 
             if (result <= 0) return BadRequest(new ApiResponse(400, "Problem adding ingrediant"));
+
+
+            return _mapper.Map<Meal, MealToReturnDto>(meal);
+        }
+
+        [HttpPut("{id}/ingrediant/{ingrediantId}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult<MealToReturnDto>> UpdateMealIngrediant(int id, IngrediantToReturnDto ingrediantDto, int ingrediantId)
+        {
+            var spec = new MealsWithTypesAndMenusSpecification(id);
+            var meal = await _unitOfWork.Repository<Meal>().GetEnitityWithSpec(spec);
+
+            meal.UpdateIngrediant(ingrediantDto.Name, ingrediantDto.Price, ingrediantDto.Quantity, ingrediantId);
+
+            _unitOfWork.Repository<Meal>().Update(meal);
+
+            var result = await _unitOfWork.Complete();
+
+            if (result <= 0) return BadRequest(new ApiResponse(400, "Problem updating ingrediant"));
 
 
             return _mapper.Map<Meal, MealToReturnDto>(meal);

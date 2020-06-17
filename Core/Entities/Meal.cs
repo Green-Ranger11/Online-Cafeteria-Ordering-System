@@ -7,15 +7,15 @@ namespace Core.Entities
     {
         public string Name { get; set; }
 
-        public string Description {get; set;}
+        public string Description { get; set; }
 
-        public decimal Price {get; set;}
+        public decimal Price { get; set; }
 
-        public MealType MealType {get; set;}
+        public MealType MealType { get; set; }
 
         public int MealTypeId { get; set; }
 
-        public Menu Menu {get; set;}
+        public Menu Menu { get; set; }
 
         public int MenuId { get; set; }
 
@@ -39,6 +39,12 @@ namespace Core.Entities
 
             _ingrediants.Add(ingrediant);
         }
+        public void UpdateIngrediant(string name, decimal price, int quantity, int id)
+        {
+            _ingrediants.FirstOrDefault(x => x.Id == id).Name = name;
+            _ingrediants.FirstOrDefault(x => x.Id == id).Price = price;
+            _ingrediants.FirstOrDefault(x => x.Id == id).Quantity = quantity;
+        }
 
         public void RemoveIngrediant(int id)
         {
@@ -53,9 +59,9 @@ namespace Core.Entities
                 FileName = fileName,
                 PictureUrl = pictureUrl
             };
-            
+
             if (_photos.Count == 0) photo.IsMain = true;
-            
+
             _photos.Add(photo);
         }
 
@@ -72,7 +78,7 @@ namespace Core.Entities
             {
                 item.IsMain = false;
             }
-            
+
             var photo = _photos.Find(x => x.Id == id);
             if (photo != null)
             {

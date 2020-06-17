@@ -1,0 +1,115 @@
+<div class="d-flex justify-content-center my-3">
+  <button class="btn btn-outline-success" *ngIf="!newIngrediantMode" (click)="newIngrediantModeToggle()">Create
+    new Ingrediant</button>
+</div>
+<div class="d-flex justify-content-start">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th *ngIf="!newIngrediantMode" scope="col">Quantity</th>
+        <th *ngIf="!newIngrediantMode" scope="col">Edit</th>
+        <th *ngIf="!editIngrediantMode  && !newIngrediantMode" scope="col">Delete</th>
+        <th *ngIf="!editIngrediantMode && newIngrediantMode" scope="col">Cancel</th>
+        <th *ngIf="editIngrediantMode || newIngrediantMode" scope="col">Save</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ingrediant of thisMeal.ingrediants; let i = index">
+        <ng-container *ngIf="!editIngrediantMode && !newIngrediantMode">
+          <td class="align-middle">{{ ingrediant.name }}</td>
+          <td class="align-middle">{{ ingrediant.price | currency}}</td>
+          <td class="align-middle">{{ ingrediant.quantity }}</td>
+          <td class="align-middle">
+            <button class="btn btn-warning" (click)="editIngrediantModeToggle(ingrediant.id, i)">Edit</button>
+          </td>
+          <td class="align-middle">
+            <button class="btn btn-danger" (click)="deleteIngrediant(ingrediant.id)">Delete</button>
+          </td>
+        </ng-container>
+
+        <ng-container *ngIf="editIngrediantMode == ingrediant.id">
+
+          <td class="align-middle"><input
+              [ngClass]="{'is-invalid': ingrediantName?.invalid && (ingrediantName?.dirty || ingrediantName?.touched)}"
+              required type="text" class="form-control" id="ingrediantName" placeholder="Meal Name"
+              ingrediantName="ingrediantName" #ingrediantName="ngModel" [(ngModel)]="ingrediant.name">
+            <div *ngIf="ingrediantName.invalid && (ingrediantName.dirty || ingrediantName.touched)"
+              class="invalid-feedback">
+              <div *ngIf="ingrediantName.errors.required">
+                Ingredient Name is required
+              </div>
+            </div>
+          </td>
+          <td class="align-middle"><input [ngClass]="{'is-invalid': price.invalid && (price.dirty || price.touched)}"
+              required type="text" class="form-control" id="price" placeholder="Price" currencyMask
+              ingrediantName="price" #price="ngModel"
+              pattern="^\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(\.[0-9][0-9])?$" min="0.01"
+              [ngModel]="+ingrediant.price | number: '1.2-2'" (ngModelChange)="updatePrice(+$event, i)">
+            <div *ngIf="price.invalid && (price.dirty || price.touched)" class="invalid-feedback">
+              <div *ngIf="price.errors.required">
+                Ingredient price is required
+              </div>
+              <div *ngIf="price.errors.pattern">
+                Ingredient price needs to be decimal value
+              </div>
+              <div *ngIf="price.errors.min">
+                Ingredient price must be greater than zero
+              </div>
+            </div>
+          </td>
+          <td class="align-middle">{{ ingrediant.quantity }}</td>
+          <td class="align-middle">
+            <button class="btn btn-warning" (click)="editIngrediantModeToggle(ingrediant.id, i)">Cancel</button>
+          </td>
+          <td class="align-middle">
+            <button class="btn btn-danger" [disabled]="!price.valid || !ingrediantName.valid"
+              (click)="onSubmit(ingrediant)">Submit</button>
+          </td>
+
+        </ng-container>
+      </tr>
+      <ng-container *ngIf="newIngrediantMode">
+        <tr>
+          <td class="align-middle"><input
+              [ngClass]="{'is-invalid': newIngrediantName?.invalid && (newIngrediantName?.dirty || newIngrediantName?.touched)}"
+              required type="text" class="form-control" id="newIngrediantName" placeholder="Ingredient Name"
+              newIngrediantName="newIngrediantName" #newIngrediantName="ngModel" [(ngModel)]="newIngrediant.name">
+            <div *ngIf="newIngrediantName.invalid && (newIngrediantName.dirty || newIngrediantName.touched)"
+              class="invalid-feedback">
+              <div *ngIf="newIngrediantName.errors.required">
+                Ingredient Name is required
+              </div>
+            </div>
+          </td>
+          <td class="align-middle">
+            <input [ngClass]="{'is-invalid': newIngredientPrice.invalid && (newIngredientPrice.dirty || newIngredientPrice.touched)}"
+              required type="text" class="form-control" id="newIngredientPrice" placeholder="Price"
+              newIngrediantName="newIngredientPrice" #newIngredientPrice="ngModel"
+              pattern="^\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(\.[0-9][0-9])?$" min="0.01"
+              [ngModel]="newIngrediant.price | number: '1.2-2'" currencyMask (ngModelChange)="updateIngrediantPrice(+$event)">
+            <div *ngIf="newIngredientPrice.invalid && (newIngredientPrice.dirty || newIngredientPrice.touched)" class="invalid-feedback">
+              <div *ngIf="newIngredientPrice.errors.required">
+                Ingredient price is required
+              </div>
+              <div *ngIf="newIngredientPrice.errors.pattern">
+                Ingredient price needs to be decimal value
+              </div>
+              <div *ngIf="newIngredientPrice.errors.min">
+                Ingredient price must be greater than zero
+              </div>
+            </div>
+          </td>
+          <td class="align-middle">
+            <button class="btn btn-warning" (click)="newIngrediantModeToggle()">Cancel</button>
+          </td>
+          <td class="align-middle">
+            <button class="btn btn-danger" [disabled]="!newIngredientPrice.valid || !newIngrediantName.valid"
+              (click)="onNewSubmit(newIngrediant)">Submit</button>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
