@@ -30,7 +30,7 @@ export class AdminComponent implements OnInit {
   }
 
   getMeals() {
-    this.shopService.getMeals(this.mealShopParams).subscribe(response => {
+    this.shopService.getMealsForManager(this.mealShopParams).subscribe(response => {
       this.meals = response.data;
       this.totalCount = response.count;
     }, error => {
@@ -39,7 +39,7 @@ export class AdminComponent implements OnInit {
   }
 
   getMenus() {
-    this.shopService.getMenus().subscribe(
+    this.shopService.getMenusForManager().subscribe(
       (response) => {
         this.menus = response;
         this.menuCount = this.menus.length;

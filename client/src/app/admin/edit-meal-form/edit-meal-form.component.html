@@ -58,7 +58,7 @@
             {{menu.name}}</option>
         </select>
       </div>
-      <div class="form-group col-md-6">
+      <div class="form-group col-md-6" *ngIf="(!isManager$ | async)">
         <label for="restaurant">Restaurant</label>
         <select id="restaurant" class="form-control" name="RestaurantId" [(ngModel)]="meal.RestaurantId"
           required>

@@ -93,15 +93,13 @@ namespace API.Controllers
         }
 
         [HttpGet("manager")]
-        public async Task<ActionResult<Pagination<MealToReturnDto>>> GetMealsForManager()
+        public async Task<ActionResult<Pagination<MealToReturnDto>>> GetMealsForManager([FromQuery] MealSpecParams mealParams)
         {
-            var mealParams = new MealSpecParams();
             var spec = new MealsWithTypesAndMenusSpecification(mealParams);
-
-            var user = await _userManager.FindByEmailFromClaimsPrinciple(HttpContext.User);
+            var email = HttpContext.User.RetrieveEmailFromPrincipal();
+            var user = await _userManager.FindByEmailAsync(email);
             var restaurants = await _unitOfWork.Repository<Restaurant>().ListAllAsync();
 
-            
             foreach (var restaurant in restaurants)
             {
                 if (restaurant.Name == user.DisplayName)
@@ -146,6 +144,18 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult<MealToReturnDto>> CreateMeal(MealCreateDto mealToCreate)
         {
+            var email = HttpContext.User.RetrieveEmailFromPrincipal();
+            var user = await _userManager.FindByEmailAsync(email);
+            var restaurants = await _unitOfWork.Repository<Restaurant>().ListAllAsync();
+
+            foreach (var restaurant in restaurants)
+            {
+                if (restaurant.Name == user.DisplayName)
+                {
+                    mealToCreate.RestaurantId = restaurant.Id;
+                }
+            };
+
             var meal = _mapper.Map<MealCreateDto, Meal>(mealToCreate);
 
             _unitOfWork.Repository<Meal>().Add(meal);
@@ -161,6 +171,20 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<MealToReturnDto>> UpdateMeal(int id, MealCreateDto mealToUpdate)
         {
+            var email = HttpContext.User.RetrieveEmailFromPrincipal();
+            var user = await _userManager.FindByEmailAsync(email);
+            var restaurants = await _unitOfWork.Repository<Restaurant>().ListAllAsync();
+
+            foreach (var restaurant in restaurants)
+            {
+                if (restaurant.Name == user.DisplayName)
+                {
+                    if (mealToUpdate.RestaurantId != restaurant.Id)
+                    {
+                        return BadRequest(403);
+                    }
+                }
+            };
             var meal = await _unitOfWork.Repository<Meal>().GetByIdAsync(id);
 
             _mapper.Map(mealToUpdate, meal);

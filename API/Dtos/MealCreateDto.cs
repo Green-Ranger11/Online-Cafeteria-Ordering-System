@@ -20,7 +20,6 @@ namespace API.Dtos
         [Required]
         public int MealTypeId { get; set; }
         
-        [Required]
         public int RestaurantId { get; set; }
 
         [Required]

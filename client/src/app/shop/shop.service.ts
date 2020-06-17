@@ -41,7 +41,7 @@ export class ShopService {
 
     params = params.append('sort', shopParams.sort);
     params = params.append('pageIndex', shopParams.pageNumber.toString());
-    params = params.append('pageIndex', shopParams.pageSize.toString());
+    params = params.append('pageSize', shopParams.pageSize.toString());
 
     return this.http
       .get<IPagination>(this.baseUrl + 'meals', { observe: 'response', params })
@@ -50,6 +50,30 @@ export class ShopService {
           return response.body;
         })
       );
+  }
+
+  getMealsForManager(shopParams: ShopParams) {
+    let params = new HttpParams();
+
+    if (shopParams.search) {
+      params = params.append('search', shopParams.search);
+    }
+
+    params = params.append('sort', shopParams.sort);
+    params = params.append('pageIndex', shopParams.pageNumber.toString());
+    params = params.append('pageSize', shopParams.pageSize.toString());
+
+    return this.http
+      .get<IPagination>(this.baseUrl + 'meals/manager', { observe: 'response', params })
+      .pipe(
+        map((response) => {
+          return response.body;
+        })
+      );
+  }
+
+  getMenusForManager() {
+    return this.http.get<IMenu[]>(this.baseUrl + 'meals/menus/manager');
   }
 
   getShopParams() {
