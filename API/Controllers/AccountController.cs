@@ -37,7 +37,8 @@ namespace API.Controllers
             {
                 Email = user.Email,
                 Token = await _tokenService.CreateToken(user),
-                DisplayName = user.DisplayName
+                DisplayName = user.DisplayName,
+                IsPayroll = user.IsPayroll
             };
         }
 
@@ -54,6 +55,23 @@ namespace API.Controllers
             var user = await _userManager.FindUserByClaimsPrincipleWithAddressAsync(HttpContext.User);
 
             return _mapper.Map<Address,AddressDto>(user.Address);
+        }
+
+        [Authorize]
+        [HttpPut("payroll")]
+        public async Task<ActionResult<UserDto>> UpdatePayroll()
+        {
+            var user = await _userManager.FindByEmailFromClaimsPrinciple(HttpContext.User);
+
+            user.IsPayroll = true ? user.IsPayroll = false : user.IsPayroll = true;
+
+            return new UserDto
+            {
+                Email = user.Email,
+                Token = await _tokenService.CreateToken(user),
+                DisplayName = user.DisplayName,
+                IsPayroll = user.IsPayroll
+            };
         }
 
         [Authorize]
@@ -88,7 +106,8 @@ namespace API.Controllers
             {
                 Email = user.Email,
                 Token = await _tokenService.CreateToken(user),
-                DisplayName = user.DisplayName
+                DisplayName = user.DisplayName,
+                IsPayroll = user.IsPayroll
             };
         }
 
@@ -104,7 +123,8 @@ namespace API.Controllers
             {
                 DisplayName = registerDto.DisplayName,
                 Email = registerDto.Email,
-                UserName = registerDto.Email
+                UserName = registerDto.Email,
+                IsPayroll = false
             };
 
             var result = await _userManager.CreateAsync(user, registerDto.Password);
@@ -119,7 +139,8 @@ namespace API.Controllers
             {
                 DisplayName = user.DisplayName,
                 Token = await _tokenService.CreateToken(user),
-                Email = user.Email
+                Email = user.Email,
+                IsPayroll = user.IsPayroll
             };
         }
     }

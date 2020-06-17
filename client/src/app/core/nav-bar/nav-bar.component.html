@@ -28,8 +28,11 @@
           <a routerLink="/orders" class="dropdown-item d-flex align-items-center py-2">
             <i class="fa fa-history mr-3"></i> View Orders
           </a>
+          <a class="dropdown-item d-flex align-items-center py-2">
+            <i class="fa fa-cog mr-3"></i> Settings
+          </a>
           <a *ngIf="(isAdmin$ | async) || (isManager$ | async)" class=" dropdown-item d-flex align-items-center py-2" routerLink="/admin">
-            <i class="fa fa-pencil-square-o mr-3"></i> Edit Menus
+            <i class="fa fa-pencil-square-o mr-3"></i> Inventory
           </a>
           <div class="dropdown-divider"></div>
           <a (click)="logout()" class="dropdown-item d-flex align-items-center py-2">

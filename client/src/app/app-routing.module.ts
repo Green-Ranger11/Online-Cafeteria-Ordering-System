@@ -67,7 +67,7 @@ const routes: Routes = [
     path: 'admin',
     canActivate: [AuthGuard, ManagerGuard],
     loadChildren: () => import('./admin/admin.module')
-      .then(mod => mod.AdminModule), data: { breadcrumb: 'Admin' }
+      .then(mod => mod.AdminModule), data: { breadcrumb: 'Inventory Management' }
   },
   { path: '**', redirectTo: 'not-found', pathMatch: 'full' },
 ];
