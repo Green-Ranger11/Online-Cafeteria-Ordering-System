@@ -16,6 +16,8 @@ export class AccountService {
   currentUser$ = this.currentUserSource.asObservable();
   private isAdminSource = new ReplaySubject<boolean>(1);
   isAdmin$ = this.isAdminSource.asObservable();
+  private isManagerSource = new ReplaySubject<boolean>(1);
+  isManager$ = this.isManagerSource.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -23,6 +25,15 @@ export class AccountService {
     if (token) {
       const decodedToken = JSON.parse(atob(token.split('.')[1]));
       if (decodedToken.role.indexOf('Admin') > -1) {
+        return true;
+      }
+    }
+  }
+
+  isManager(token: string): boolean {
+    if (token) {
+      const decodedToken = JSON.parse(atob(token.split('.')[1]));
+      if (decodedToken.role.indexOf('Manager') > -1) {
         return true;
       }
     }
@@ -42,6 +53,7 @@ export class AccountService {
         localStorage.setItem('token', user.token);
         this.currentUserSource.next(user);
         this.isAdminSource.next(this.isAdmin(user.token));
+        this.isManagerSource.next(this.isManager(user.token));
       })
     );
   }
@@ -53,6 +65,7 @@ export class AccountService {
           localStorage.setItem('token', user.token);
           this.currentUserSource.next(user);
           this.isAdminSource.next(this.isAdmin(user.token));
+          this.isManagerSource.next(this.isManager(user.token));
         }
       })
     );

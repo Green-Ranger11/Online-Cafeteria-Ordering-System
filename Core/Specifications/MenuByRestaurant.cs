@@ -9,5 +9,8 @@ namespace Core.Specifications
         public MenuByRestaurant(int id) : base(m => m.RestaurantId == id)
         {
         }
+        public MenuByRestaurant(string name) : base(m => m.Restaurant.Name == name)
+        {
+        }
     }
 }

@@ -3,14 +3,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.Dtos;
 using API.Errors;
+using API.Extensions;
 using API.Helpers;
 using AutoMapper;
 using Core.Entities;
+using Core.Entities.Identity;
 using Core.Interfaces;
 using Core.Specifications;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,12 +25,15 @@ namespace API.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly IPhotoService _photoService;
 
-        public MealsController(IUnitOfWork unitOfWork,
-        IMapper mapper, IPhotoService photoService)
+        private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
+        public MealsController(IUnitOfWork unitOfWork, IMapper mapper, IPhotoService photoService, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
             _photoService = photoService;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         [HttpGet]
@@ -63,7 +69,56 @@ namespace API.Controllers
         [HttpGet("menus")]
         public async Task<ActionResult<IReadOnlyList<Menu>>> GetMenus()
         {
+            var email = HttpContext.User.RetrieveEmailFromPrincipal();
+
             return Ok(await _unitOfWork.Repository<Menu>().ListAllAsync());
+        }
+
+        [HttpGet("menus/manager")]
+        public async Task<ActionResult<IReadOnlyList<Menu>>> GetMenusForManager()
+        {
+            var user = await _userManager.FindByEmailFromClaimsPrinciple(HttpContext.User);
+            var restaurants = await _unitOfWork.Repository<Restaurant>().ListAllAsync();
+
+            foreach (var restaurant in restaurants)
+            {
+                if (restaurant.Name == user.DisplayName)
+                {
+                    var spec = new MenuByRestaurant(user.DisplayName);
+                    return Ok(await _unitOfWork.Repository<Menu>().ListAsync(spec));
+                }
+            };
+
+            return Ok(await _unitOfWork.Repository<Menu>().ListAllAsync());
+        }
+
+        [HttpGet("manager")]
+        public async Task<ActionResult<Pagination<MealToReturnDto>>> GetMealsForManager()
+        {
+            var mealParams = new MealSpecParams();
+            var spec = new MealsWithTypesAndMenusSpecification(mealParams);
+
+            var user = await _userManager.FindByEmailFromClaimsPrinciple(HttpContext.User);
+            var restaurants = await _unitOfWork.Repository<Restaurant>().ListAllAsync();
+
+            
+            foreach (var restaurant in restaurants)
+            {
+                if (restaurant.Name == user.DisplayName)
+                {
+                    mealParams.RestaurantId = restaurant.Id;
+                }
+            };
+
+            var countSpec = new MealWithFiltersForCountSpecification(mealParams);
+
+            var totalItems = await _unitOfWork.Repository<Meal>().CountAsync(countSpec);
+
+            var meals = await _unitOfWork.Repository<Meal>().ListAsync(spec);
+
+            var data = _mapper.Map<IReadOnlyList<Meal>, IReadOnlyList<MealToReturnDto>>(meals);
+
+            return Ok(new Pagination<MealToReturnDto>(mealParams.PageIndex, mealParams.PageSize, totalItems, data));
         }
 
         [HttpGet("menus/{id}")]
@@ -87,7 +142,7 @@ namespace API.Controllers
             return Ok(await _unitOfWork.Repository<MealType>().ListAllAsync());
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Manager")]
         [HttpPost]
         public async Task<ActionResult<MealToReturnDto>> CreateMeal(MealCreateDto mealToCreate)
         {
@@ -102,7 +157,7 @@ namespace API.Controllers
             return _mapper.Map<Meal, MealToReturnDto>(meal);
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Manager")]
         [HttpPut("{id}")]
         public async Task<ActionResult<MealToReturnDto>> UpdateMeal(int id, MealCreateDto mealToUpdate)
         {
@@ -119,7 +174,7 @@ namespace API.Controllers
             return _mapper.Map<Meal, MealToReturnDto>(meal);
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Manager")]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteMeal(int id)
         {
@@ -144,7 +199,7 @@ namespace API.Controllers
         }
 
         [HttpPut("{id}/photo")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Manager")]
         public async Task<ActionResult<MealToReturnDto>> AddMealPhoto(int id, [FromForm] MealPhotoDto photoDto)
         {
             var spec = new MealsWithTypesAndMenusSpecification(id);
@@ -174,7 +229,7 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}/photo/{photoId}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Manager")]
         public async Task<ActionResult> DeleteMealPhoto(int id, int photoId)
         {
             var spec = new MealsWithTypesAndMenusSpecification(id);
@@ -207,7 +262,7 @@ namespace API.Controllers
         }
 
         [HttpPost("{id}/ingrediant")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Manager")]
         public async Task<ActionResult<MealToReturnDto>> AddMealIngrediant(int id, IngrediantToReturnDto ingrediantDto)
         {
             var spec = new MealsWithTypesAndMenusSpecification(id);
@@ -226,7 +281,7 @@ namespace API.Controllers
         }
 
         [HttpPut("{id}/ingrediant/{ingrediantId}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Manager")]
         public async Task<ActionResult<MealToReturnDto>> UpdateMealIngrediant(int id, IngrediantToReturnDto ingrediantDto, int ingrediantId)
         {
             var spec = new MealsWithTypesAndMenusSpecification(id);
@@ -245,7 +300,7 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}/ingrediant/{ingrediantId}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Manager")]
         public async Task<ActionResult> DeleteMealIngrediant(int id, int ingrediantId)
         {
             var spec = new MealsWithTypesAndMenusSpecification(id);
@@ -263,7 +318,7 @@ namespace API.Controllers
         }
 
         [HttpPost("{id}/photo/{photoId}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Manager")]
         public async Task<ActionResult<MealToReturnDto>> SetMainPhoto(int id, int photoId)
         {
             var spec = new MealsWithTypesAndMenusSpecification(id);
