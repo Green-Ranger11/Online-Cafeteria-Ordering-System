@@ -38,6 +38,9 @@ namespace Infrastructure.Services
                 var mealspec = new MealsWithTypesAndMenusSpecification(mealItem.Id);
                 // Get meal with Photos and other entitys
                 var meal = await _unitOfWork.Repository<Meal>().GetEnitityWithSpec(mealspec);
+                // Update Stock
+                meal.Stock -= item.Quantity;
+                _unitOfWork.Repository<Meal>().Update(meal);
                 // Create Item Ordered
                 var itemOrdered = new MealItemOrdered(meal.Id, meal.Name, meal.Photos.FirstOrDefault(x => x.IsMain)?.PictureUrl);
                 // Add Ingrediants and Quantity

@@ -46,8 +46,21 @@ namespace API.Controllers
             var totalItems = await _unitOfWork.Repository<Meal>().CountAsync(countSpec);
 
             var meals = await _unitOfWork.Repository<Meal>().ListAsync(spec);
+            var mealsToReturn = new List<Meal>();
 
-            var data = _mapper.Map<IReadOnlyList<Meal>, IReadOnlyList<MealToReturnDto>>(meals);
+            foreach (var meal in meals)
+            {
+                if (meal.Stock > 0)
+                {
+                    mealsToReturn.Add(meal);
+                }
+                if (meal.Stock < 1)
+                {
+                    totalItems --;
+                }
+            }
+
+            var data = _mapper.Map<IReadOnlyList<Meal>, IReadOnlyList<MealToReturnDto>>(mealsToReturn);
 
             return Ok(new Pagination<MealToReturnDto>(mealParams.PageIndex, mealParams.PageSize, totalItems, data));
         }
@@ -185,6 +198,12 @@ namespace API.Controllers
                     }
                 }
             };
+
+            if (mealToUpdate.Stock < 0)
+            {
+                mealToUpdate.Stock = 100;
+            }
+
             var meal = await _unitOfWork.Repository<Meal>().GetByIdAsync(id);
 
             _mapper.Map(mealToUpdate, meal);

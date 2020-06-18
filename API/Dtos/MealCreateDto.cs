@@ -24,5 +24,6 @@ namespace API.Dtos
 
         [Required]
         public int MenuId { get; set; }
+        public int Stock { get; set; }
     }
 }

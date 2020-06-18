@@ -1,71 +1,86 @@
 <form #mealForm="ngForm" (ngSubmit)="onSubmit(mealForm.valid && mealForm.value)">
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="name">Meal Name</label>
-        <input [ngClass]="{'is-invalid': name?.invalid && (name?.dirty || name?.touched)}" required type="text"
-          class="form-control" id="name" placeholder="Meal Name" name="name" #name="ngModel"
-          [(ngModel)]="meal.name">
-        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
-          <div *ngIf="name.errors.required">
-            Meal Name is required
-          </div>
-        </div>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="price">Price</label>
-        <input [ngClass]="{'is-invalid': price.invalid && (price.dirty || price.touched)}" required type="text"
-          class="form-control" id="price" placeholder="Price" currencyMask name="price" #price="ngModel"
-          pattern="^\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(\.[0-9][0-9])?$" min="0.01"
-          [ngModel]="+meal.price | number: '1.2-2'" (ngModelChange)="updatePrice(+$event)">
-        <div *ngIf="price.invalid && (price.dirty || price.touched)" class="invalid-feedback">
-          <div *ngIf="price.errors.required">
-            Meal price is required
-          </div>
-          <div *ngIf="price.errors.pattern">
-            Meal price needs to be decimal value
-          </div>
-          <div *ngIf="price.errors.min">
-            Meal price must be greater than zero
-          </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="name">Meal Name</label>
+      <input [ngClass]="{'is-invalid': name?.invalid && (name?.dirty || name?.touched)}" required type="text"
+        class="form-control" id="name" placeholder="Meal Name" name="name" #name="ngModel" [(ngModel)]="meal.name">
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
+        <div *ngIf="name.errors.required">
+          Meal Name is required
         </div>
       </div>
     </div>
-    <div class="form-row">
-      <div class="form-group col-md-12">
-        <label for="description">Description</label>
-        <textarea [ngClass]="{'is-invalid': description.invalid && (description.dirty || description.touched)}"
-          required #description="ngModel" class="form-control" id="description" [(ngModel)]="meal.description"
-          name="description" rows="3"></textarea>
-        <div *ngIf="description.invalid && (description.dirty || description.touched)" class="invalid-feedback">
-          <div *ngIf="description.errors.required">
-            Meal price is required
-          </div>
+    <div class="form-group col-md-6">
+      <label for="price">Price</label>
+      <input [ngClass]="{'is-invalid': price.invalid && (price.dirty || price.touched)}" required type="text"
+        class="form-control" id="price" placeholder="Price" currencyMask name="price" #price="ngModel"
+        pattern="^\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(\.[0-9][0-9])?$" min="0.01"
+        [ngModel]="+meal.price | number: '1.2-2'" (ngModelChange)="updatePrice(+$event)">
+      <div *ngIf="price.invalid && (price.dirty || price.touched)" class="invalid-feedback">
+        <div *ngIf="price.errors.required">
+          Meal price is required
+        </div>
+        <div *ngIf="price.errors.pattern">
+          Meal price needs to be decimal value
+        </div>
+        <div *ngIf="price.errors.min">
+          Meal price must be greater than zero
         </div>
       </div>
     </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="type">Type</label>
-        <select id="type" class="form-control" name="mealTypeId" [(ngModel)]="meal.mealTypeId" required>
-          <option *ngFor="let type of types" [selected]="meal.mealTypeId === type.id" [ngValue]="type.id">
-            {{type.name}}</option>
-        </select>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="menu">Menu</label>
-        <select id="menu" class="form-control" name="MenuId" [(ngModel)]="meal.MenuId" required>
-          <option *ngFor="let menu of menus" [selected]="meal.MenuId === menu.id" [ngValue]="menu.id">
-            {{menu.name}}</option>
-        </select>
-      </div>
-      <div class="form-group col-md-6" *ngIf="(!isManager$ | async)">
-        <label for="restaurant">Restaurant</label>
-        <select id="restaurant" class="form-control" name="RestaurantId" [(ngModel)]="meal.RestaurantId"
-          required>
-          <option *ngFor="let restaurant of restaurants" [selected]="meal.RestaurantId === restaurant.id"
-            [ngValue]="restaurant.id">{{restaurant.name}}</option>
-        </select>
+    <div class="form-group col-md-6">
+      <label for="stock">Stock</label>
+      <input [ngClass]="{'is-invalid': stock.invalid && (stock.dirty || stock.touched)}" required type="number"
+        class="form-control" id="stock" placeholder="Stock" name="stock" #stock="ngModel" min="1"
+        [ngModel]="+meal.stock">
+      <div *ngIf="stock.invalid && (stock.dirty || stock.touched)" class="invalid-feedback">
+        <div *ngIf="stock.errors.required">
+          Meal stock is required
+        </div>
+        <div *ngIf="stock.errors.pattern">
+          Meal stock needs to be decimal value
+        </div>
+        <div *ngIf="stock.errors.min">
+          Meal stock must be greater than zero
+        </div>
       </div>
     </div>
-    <button [disabled]="!mealForm.valid" type="submit" class="btn btn-primary my-3 float-right">Submit</button>
-  </form>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="description">Description</label>
+      <textarea [ngClass]="{'is-invalid': description.invalid && (description.dirty || description.touched)}" required
+        #description="ngModel" class="form-control" id="description" [(ngModel)]="meal.description" name="description"
+        rows="3"></textarea>
+      <div *ngIf="description.invalid && (description.dirty || description.touched)" class="invalid-feedback">
+        <div *ngIf="description.errors.required">
+          Meal Description is required
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="type">Type</label>
+      <select id="type" class="form-control" name="mealTypeId" [(ngModel)]="meal.mealTypeId" required>
+        <option *ngFor="let type of types" [selected]="meal.mealTypeId === type.id" [ngValue]="type.id">
+          {{type.name}}</option>
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="menu">Menu</label>
+      <select id="menu" class="form-control" name="MenuId" [(ngModel)]="meal.MenuId" required>
+        <option *ngFor="let menu of menus" [selected]="meal.MenuId === menu.id" [ngValue]="menu.id">
+          {{menu.name}}</option>
+      </select>
+    </div>
+    <div class="form-group col-md-6" *ngIf="!(isManager$ | async)">
+      <label for="restaurant">Restaurant</label>
+      <select id="restaurant" class="form-control" name="RestaurantId" [(ngModel)]="meal.RestaurantId" required>
+        <option *ngFor="let restaurant of restaurants" [selected]="meal.RestaurantId === restaurant.id"
+          [ngValue]="restaurant.id">{{restaurant.name}}</option>
+      </select>
+    </div>
+  </div>
+  <button [disabled]="!mealForm.valid" type="submit" class="btn btn-primary my-3 float-right">Submit</button>
+</form>

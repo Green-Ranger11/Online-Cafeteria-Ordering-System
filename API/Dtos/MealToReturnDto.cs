@@ -18,6 +18,7 @@ namespace API.Dtos
         public string Menu { get; set; }
 
         public string Restaurant {get; set;}
+        public int Stock { get; set; }
 
         public IEnumerable<PhotoToReturnDto> Photos { get; set; }
 

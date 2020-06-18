@@ -9,6 +9,7 @@ export interface IMeal {
   restaurant: string;
   photos: Photo[];
   ingrediants: Ingrediant[];
+  stock: number;
 }
 
 export interface Photo {
@@ -49,6 +50,7 @@ export interface IMealToCreate {
   mealTypeId: number;
   MenuId: number;
   RestaurantId: number;
+  stock: number;
 }
 
 export class MealFormValues implements IMealToCreate {
@@ -59,6 +61,7 @@ export class MealFormValues implements IMealToCreate {
   RestaurantId: number;
   MenuId: number;
   mealTypeId: number;
+  stock = 0;
 
   constructor(init?: MealFormValues) {
     Object.assign(this, init);

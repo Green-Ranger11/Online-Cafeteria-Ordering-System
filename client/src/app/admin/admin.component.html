@@ -40,6 +40,9 @@
                         <div class="p-2 px-3 text-uppercase">Price</div>
                       </th>
                       <th scope="col">
+                        <div class="p-2 px-3 text-uppercase">Stock</div>
+                      </th>
+                      <th scope="col">
                         <div class="p-2 px-3 text-uppercase">Edit</div>
                       </th>
                       <th scope="col">
@@ -60,6 +63,7 @@
                         <h5>{{meal.name}}</h5>
                       </th>
                       <td class="align-middle">{{meal.price | currency}}</td>
+                      <td class="align-middle">{{meal.stock}}</td>
                       <td class="align-middle"><button [routerLink]="['edit', meal.id]"
                           class="btn btn-warning">Edit</button></td>
                       <td class="align-middle"><button (click)="deleteMeal(meal.id)"

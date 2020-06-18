@@ -22,6 +22,7 @@ namespace Core.Entities
         public Restaurant Restaurant { get; set; }
 
         public int RestaurantId { get; set; }
+        public int Stock { get; set; } = 100;
 
         private readonly List<Ingrediant> _ingrediants = new List<Ingrediant>();
         public IReadOnlyList<Ingrediant> Ingrediants => _ingrediants.AsReadOnly();
