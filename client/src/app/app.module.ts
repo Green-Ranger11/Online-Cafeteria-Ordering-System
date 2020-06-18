@@ -10,10 +10,12 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
+import { MealPlansComponent } from './meal-plans/meal-plans.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MealPlansComponent
   ],
   imports: [
     BrowserModule,

@@ -22,6 +22,8 @@ namespace Infrastructure.Data
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<DeliveryMethod> DeliveryMethods { get; set; }
         public DbSet<Ingrediant> Ingrediants { get; set; }
+        public DbSet<MealPlan> MealPlans { get; set; }
+        public DbSet<MealPlanDay> MealPlanDays { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

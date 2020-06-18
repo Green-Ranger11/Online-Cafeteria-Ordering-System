@@ -32,6 +32,12 @@ const routes: Routes = [
     data: { breadcrumb: 'Meals' }
   },
   {
+    path: 'meal-plans',
+    loadChildren: () =>
+      import('./meal-plans/meal-plans.module').then((mod) => mod.MealPlansModule),
+    data: { breadcrumb: 'Meal Plans' }
+  },
+  {
     path: 'menu',
     loadChildren: () =>
       import('./menu/menu.module').then((mod) => mod.MenuModule),
