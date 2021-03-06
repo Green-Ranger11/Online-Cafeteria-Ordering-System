@@ -57,7 +57,7 @@ Finally, open another terminal navigate to the client Project folder and run the
 ng-serve
 ```
 This should open a new tab in your default browser with this view:
-![Image of Home Page](/API/wwwroot/images/HomePage.png)
+![Image of Home Page](https://github.com/Green-Ranger11/Online-Cafeteria-Ordering-System/blob/master/API/wwwroot/images/HomePage.PNG)
 
 ## Running the tests
 
