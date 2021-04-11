@@ -69,13 +69,6 @@ Open POSTman import the test suite from tests.zip and run to test functionality 
 * [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/)
 * [Angular](https://angular.io/)
 
-## Authors
-
-* **Avishay Mishra**
-* **Moheez Kahn**
-* **James Tuhuna**
-* **Alesana Eteuati Jr**
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
